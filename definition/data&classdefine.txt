@@ -7,7 +7,7 @@ class map{  //地图类
   public:
 
 
-}
+};
 class robot{  //机器人类
 
   private:
@@ -17,5 +17,5 @@ class robot{  //机器人类
 
 
 
-}
+};
 
