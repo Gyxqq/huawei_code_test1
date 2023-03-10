@@ -1,1 +1,21 @@
 
+class map{  //地图类
+  
+  private:
+      
+    
+  public:
+
+
+}
+class robot{  //机器人类
+
+  private:
+
+
+  public:
+
+
+
+}
+
