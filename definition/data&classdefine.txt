@@ -1,13 +1,35 @@
-
 class map{  //地图类
   
   private:
-      
+      struct table{
+        
+          int type;  //工作台类型 type=1为1型工作台，以此类推
+          double x,y;  //工作台位置  
+          int  rest;  /*
+
+                      -1:表示没有生产
+                      0:表示生产因为输出格满而阻塞
+                      >=0:表示剩余生产的帧数
+
+                      */
+          bool outstats;  //产品格状态 0表示无,1表示有
+          
+          bool instats[8]; //储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
+         
+
+
+                }  //储存地图信息
     
   public:
 
+  bool mapinit(){     //地图初始化函数 从stdin读入数据
 
-};
+
+
+  }
+
+
+}
 class robot{  //机器人类
 
   private:
@@ -17,5 +39,5 @@ class robot{  //机器人类
 
 
 
-};
+}
 
