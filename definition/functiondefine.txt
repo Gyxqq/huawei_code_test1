@@ -1,0 +1,4 @@
+bool input(int& now_frame,int& now_money,table* table_in_map,int table_num,robot* robot_in_map)
+//分别储存当前帧，当前资金，工作台数组，工作台数量，机器人数组，从标准输入读取数据并存放到对应位置
+bool output(output_command* out_put_command) //对储存的需要输出的数据进行输出
+
