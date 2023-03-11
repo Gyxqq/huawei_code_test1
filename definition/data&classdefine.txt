@@ -2,6 +2,7 @@ class map
 { // 地图类
 
 private:
+  int num;//工作台编号，从0开始
   int type; // 工作台类型 type=1为1型工作台，以此类推
 
   double x, y; // 工作台位置
@@ -23,7 +24,7 @@ public:
   bool
   mapinit()
   { // 地图初始化函数 从stdin读入数据
-  
+
   }
 } class robot
 { // 机器人类
@@ -31,6 +32,8 @@ public:
 private:
   int num;     // 机器人编号
   double x, y; // 机器人位置
+  int table; //机器人所处的工作台ID
+
 
 public:
   double *getposition()
