@@ -2,7 +2,7 @@ class map
 { // 地图类
 
 private:
-  int num;//工作台编号，从0开始
+  int num;  // 工作台编号，从0开始
   int type; // 工作台类型 type=1为1型工作台，以此类推
 
   double x, y; // 工作台位置
@@ -24,21 +24,26 @@ public:
   bool
   mapinit()
   { // 地图初始化函数 从stdin读入数据
-
   }
 } class robot
 { // 机器人类
 
 private:
-  int num;     // 机器人编号
-  double x, y; // 机器人位置
-  int table; //机器人所处的工作台ID
-
+  int num;           // 机器人编号
+  double x, y;       // 机器人位置
+  int table;         // 机器人所处的工作台ID -1表示当前没有处于任何工作台周围 从0开始
+  int object;        // 携带物品种类 0表示未携带
+  double time_value; // 时间价值系数
+  double col_value;  // 碰撞价值系数
+  double ang_speed   // 角速度
+      double speed_x,
+      speed_y;   // 线速度
+  double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
 
 public:
   double *getposition()
   { // 获取机器人位置函数，用动态分配实现，返回一个二位数组
-
+  
 
   }
 }
