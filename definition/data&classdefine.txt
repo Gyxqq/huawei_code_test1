@@ -43,5 +43,6 @@ private:
 public:
   double *getposition()
   { // 获取机器人位置函数，用动态分配实现，返回一个二位数组
+  
   }
 }
