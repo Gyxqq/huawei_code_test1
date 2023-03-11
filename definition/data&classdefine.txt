@@ -1,6 +1,7 @@
 class map{  //地图类
   
   private:
+  
       struct table{
         
           int type;  //工作台类型 type=1为1型工作台，以此类推
