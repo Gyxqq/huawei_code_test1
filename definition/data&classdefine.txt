@@ -40,6 +40,3 @@ class robot{  //机器人类
 
 
 };
-//gyx2023
-//ggyyxx
-//jzt
