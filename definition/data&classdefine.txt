@@ -2,36 +2,39 @@ class map
 { // 地图类
 
 private:
-  struct table
-  {
+  int type; // 工作台类型 type=1为1型工作台，以此类推
 
-    int type; // 工作台类型 type=1为1型工作台，以此类推
+  double x, y; // 工作台位置
 
-    double x, y; // 工作台位置
-
-    int rest;      /*
+  int rest;      /*
      
-                   -1:表示没有生产
-                   0:表示生产因为输出格满而阻塞
-                   >=0:表示剩余生产的帧数
+                 -1:表示没有生产
+                 0:表示生产因为输出格满而阻塞
+                 >=0:表示剩余生产的帧数
      
-                   */
-    bool outstats; // 产品格状态 0表示无,1表示有
+                 */
+  bool outstats; // 产品格状态 0表示无,1表示有
 
-    bool instats[8]; // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
+  bool instats[8]; // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
 
-  } // 储存工作台信息
+  // 储存工作台信息
 
-  public :
-
-      bool
-      mapinit()
+public:
+  bool
+  mapinit()
   { // 地图初始化函数 从stdin读入数据
-    }
-};
-class robot
+  }
+} class robot
 { // 机器人类
 
 private:
+  int num;     // 机器人编号
+  double x, y; // 机器人位置
+  
 public:
-};
+  double *getposition()
+  { // 获取机器人位置函数，用动态分配实现，返回一个二位数组
+
+
+  }
+}
