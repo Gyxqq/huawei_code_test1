@@ -23,6 +23,7 @@ public:
   bool
   mapinit()
   { // 地图初始化函数 从stdin读入数据
+  
   }
 } class robot
 { // 机器人类
@@ -30,7 +31,7 @@ public:
 private:
   int num;     // 机器人编号
   double x, y; // 机器人位置
-  
+
 public:
   double *getposition()
   { // 获取机器人位置函数，用动态分配实现，返回一个二位数组
