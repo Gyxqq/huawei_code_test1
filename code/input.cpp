@@ -1,48 +1,53 @@
 /*
 实现数据输入功能(不包括初始化)
 */
-#include"data_struct.h"
-#include<iostream>
-#include<cstdio>
-using namespace std;
-bool input(int& now_frame,int& now_money,table* table_in_map,int& table_num,robot* robot_in_map){
+#include "data_struct.h"
+#include <iostream>
+#include <cstdio>
+bool input(int &now_frame, int &now_money, table *table_in_map, int &table_num, robot_data *robot_in_map)
+{
     int state_in_decimal;
-    //十进制整数表示的原材料格状态
-    cin>>now_frame>>now_money;
-    //第一行：输入帧序号和当前金钱数
-    cin>>table_num;
-    //第二行：输入厂上的工作台数量
-    for(int i=1; i<=table_num; i++){
-        table_in_map[i].num=i;
-        cin>>table_in_map[i].type;
-        cin>>table_in_map[i].x>>table_in_map[i].y;
-        cin>>table_in_map[i].rest;
-        cin>>state_in_decimal;
-        //输入原材料格状态
-        for(int j=0; j<=7; j++){
-            table_in_map[i].instats[j]=(bool) (state_in_decimal%2);
-            state_in_decimal/=2;
+    // 十进制整数表示的原材料格状态
+    std::cin >> now_frame >> now_money;
+    // 第一行：输入帧序号和当前金钱数
+    std::cin >> table_num;
+    // 第二行：输入厂上的工作台数量
+    for (int i = 0; i < table_num; i++)
+    {
+        table_in_map[i].num = i;
+        std::cin >> table_in_map[i].type;
+        std::cin >> table_in_map[i].x >> table_in_map[i].y;
+        std::cin >> table_in_map[i].rest;
+        std::cin >> state_in_decimal;
+        // 输入原材料格状态
+        for (int j = 0; j <= 7; j++)
+        {
+            table_in_map[i].instats[j] = (bool)(state_in_decimal % 2);
+            state_in_decimal /= 2;
         }
-        cin>>table_in_map[i].outstats;
+        std::cin >> table_in_map[i].outstats;
     }
-    //输入工作台的相关数据
-    for(int i=0; i<4; i++){
-        robot_in_map[i].get_num(i);
-        robot_in_map[i].get_table();
-        robot_in_map[i].get_object();
-        robot_in_map[i].get_time_value();
-        robot_in_map[i].get_col_value();
-        robot_in_map[i].get_ang_speed();
-        robot_in_map[i].get_line_speed();
-        robot_in_map[i].get_toward();
-        robot_in_map[i].get_x_y();
+    // 输入工作台的相关数据
+    for (int i = 0; i < 4; i++)
+    {
+        robot_in_map[i].num = i;
+        std::cin >> robot_in_map[i].table;
+        std::cin >> robot_in_map[i].object;
+        std::cin >> robot_in_map[i].time_value;
+        std::cin >> robot_in_map[i].col_value;
+        std::cin >> robot_in_map[i].ang_speed;
+        std::cin >> robot_in_map[i].speed_x >> robot_in_map[i].speed_y;
+        std::cin >> robot_in_map[i].toward;
+        std::cin >> robot_in_map[i].x >> robot_in_map[i].y;
     }
-    //输入4个机器人的相关数据
-    if(scanf("OK")){
+    // 输入4个机器人的相关数据
+    if (scanf("OK"))
+    {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
-    //最后一行输入"OK",则为true,反之则为false
+    // 最后一行输入"OK",则为true,反之则为false
 }
