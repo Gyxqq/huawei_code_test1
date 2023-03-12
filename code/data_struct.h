@@ -41,68 +41,7 @@ struct output_command
     int command_num;      // 输出的命令数
     command *out_command; // 储存命令的数组，建议采用动态内存分配空间
 };
-class map
 
-{ // 地图类
-
-private:
-    table *table_in_map; // 储存工作台信息的数组
-    int table_num;       // 储存工作台数量
-
-public:
-    bool
-    mapinit(); // 地图初始化函数 从stdin读入数据 并动态内存分配创建一个table数组赋值给table_in_map
-
-    table *gettable(); // 返回工作台数组
-
-    int gettable_num(); // 返回工作台数量
-};
-
-class robot
-{ // 机器人类
-
-private:
-    int num;           // 机器人编号
-    double x, y;       // 机器人位置
-    int table;         // 机器人所处的工作台ID -1表示当前没有处于任何工作台周围 从0开始
-    int object;        // 携带物品种类 0表示未携带
-    double time_value; // 时间价值系数
-    double col_value;  // 碰撞价值系数
-    double ang_speed;   // 角速度
-        double speed_x,
-        speed_y;   // 线速度
-    double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
-
-public:
-    double *getposition(); // 获取机器人位置函数，用动态分配实现，返回一个二位数组
-    void get_num(int i){
-        num=i;
-    }
-    void get_table(){
-        cin>>table;
-    }
-    void get_object(){
-        cin>>object;
-    }
-    void get_time_value(){
-        cin>>time_value;
-    }
-    void get_col_value(){
-        cin>>col_value;
-    }
-    void get_ang_speed(){
-        cin>>ang_speed;
-    }
-    void get_line_speed(){
-        cin>>speed_x>>speed_y;
-    }
-    void get_toward(){
-        cin>>toward;
-    }
-    void get_x_y(){
-        cin>>x>>y;
-    }
-};
 struct robot_data{
    int num;           // 机器人编号
   double x, y;       // 机器人位置

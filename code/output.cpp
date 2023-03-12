@@ -7,6 +7,7 @@
 using namespace std;
 bool output(output_command* out_put_command)
 {
+    
     const int num=out_put_command->command_num;//num暂存输出命令数
     //输出当前帧数
     cout<<out_put_command->frame<<endl;
@@ -21,4 +22,5 @@ bool output(output_command* out_put_command)
     cout<<"OK";
     delete[] out_put_command->out_command;
     return 1;
+
 }
