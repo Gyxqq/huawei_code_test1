@@ -11,7 +11,7 @@ private:
   int table_num;       // 储存工作台数量
 
 public:
-   bool mapinit(robot& robot); // 地图初始化函数 从stdin读入数据 并动态内存分配创建一个table数组赋值给table_in_map
+   bool mapinit(robot robot[]); // 地图初始化函数 从stdin读入数据 并动态内存分配创建一个table数组赋值给table_in_map
 
   table *gettable(); // 返回工作台数组
 
