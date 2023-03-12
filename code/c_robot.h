@@ -1,4 +1,6 @@
 #include"data_struct.h"
+#ifndef c_robot.h
+#define c_robot.h
 class robot
 { // 机器人类
 
@@ -24,3 +26,5 @@ struct robot_data data; //储存机器人数据
 
 
 };
+
+#endif

@@ -1,4 +1,7 @@
 #include "data_struct.h"
+#include"c_robot.h"
+#ifndef c_map.h
+#define c_map.h
 class map
 
 { // 地图类
@@ -14,3 +17,7 @@ public:
 
   int gettable_num(); // 返回工作台数量
 };
+
+
+
+#endif
