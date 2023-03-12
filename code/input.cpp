@@ -25,6 +25,7 @@ bool input(int& now_frame,int& now_money,table* table_in_map,int& table_num,robo
         }
         cin>>table_in_map[i].outstats;
     }
+    //输入工作台的相关数据
     for(int i=0; i<4; i++){
         robot_in_map[i].get_num(i);
         robot_in_map[i].get_table();
@@ -36,10 +37,12 @@ bool input(int& now_frame,int& now_money,table* table_in_map,int& table_num,robo
         robot_in_map[i].get_toward();
         robot_in_map[i].get_x_y();
     }
+    //输入4个机器人的相关数据
     if(scanf("OK")){
         return true;
     }
     else{
         return false;
     }
+    //最后一行输入"OK",则为true,反之则为false
 }
