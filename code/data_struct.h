@@ -43,7 +43,7 @@ struct output_command
 };
 
 struct robot_data{
-   int num;           // 机器人编号
+   int num;           // 机器人编号 [0,3]
   double x, y;       // 机器人位置
   int table;         // 机器人所处的工作台ID -1表示当前没有处于任何工作台周围 从0开始
   int object;        // 携带物品种类 0表示未携带
