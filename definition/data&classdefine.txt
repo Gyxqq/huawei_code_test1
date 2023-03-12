@@ -30,8 +30,8 @@ struct command
   destroy 摧毁物品            机器人ID[0，3]                  none
   */
  
- double arg1;
- double arg2;
+int arg1;  //参数1
+ double arg2;  //参数2
                     
 };
 
