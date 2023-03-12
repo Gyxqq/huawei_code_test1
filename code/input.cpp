@@ -26,6 +26,20 @@ bool input(int& now_frame,int& now_money,table* table_in_map,int& table_num,robo
         cin>>table_in_map[i].outstats;
     }
     for(int i=0; i<4; i++){
-        robot_in_map[i]
+        robot_in_map[i].get_num(i);
+        robot_in_map[i].get_table();
+        robot_in_map[i].get_object();
+        robot_in_map[i].get_time_value();
+        robot_in_map[i].get_col_value();
+        robot_in_map[i].get_ang_speed();
+        robot_in_map[i].get_line_speed();
+        robot_in_map[i].get_toward();
+        robot_in_map[i].get_x_y();
+    }
+    if(scanf("OK")){
+        return true;
+    }
+    else{
+        return false;
     }
 }

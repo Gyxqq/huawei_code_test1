@@ -75,4 +75,31 @@ private:
 
 public:
     double *getposition(); // 获取机器人位置函数，用动态分配实现，返回一个二位数组
+    void get_num(int i){
+        num=i;
+    }
+    void get_table(){
+        cin>>table;
+    }
+    void get_object(){
+        cin>>object;
+    }
+    void get_time_value(){
+        cin>>time_value;
+    }
+    void get_col_value(){
+        cin>>col_value;
+    }
+    void get_ang_speed(){
+        cin>>ang_speed;
+    }
+    void get_line_speed(){
+        cin>>speed_x>>speed_y;
+    }
+    void get_toward(){
+        cin>>toward;
+    }
+    void get_x_y(){
+        cin>>x>>y;
+    }
 };
