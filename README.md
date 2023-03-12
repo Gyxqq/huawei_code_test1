@@ -17,7 +17,7 @@ code 存放代码
 
                     1.所有结构体放入data_struct.h定义,通过include包含
 
-                    2.在xxx.h中定义类,在xxx.cpp中实现成员函数 ,主函数包含xxx.h即可
+                    2.在c_xxx.h中定义类,在c_xxx.cpp中实现成员函数 ,主函数包含c_xxx.h即可
 
                     3.function中的函数以函数名命名xxx.h,在xxx.cpp中实现，将所有函数头文件包含在function.h中
 
