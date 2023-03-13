@@ -82,13 +82,13 @@ bool robot::avoid_crash(robot bot[]){
         }
         for(int i=0;i<4;i++)//分别判断各个机器人是否可能碰撞（已考虑体积变大的情况）
         {
-            for(int j=i+1;j<4;j++)
+            if(i!=data.num)
             {
-                double distance=sqrt((bot[i].data.x-bot[j].data.x)*(bot[i].data.x-bot[j].data.x)+(bot[i].data.y-bot[j].data.y)*(bot[i].data.y-bot[j].data.y));
-                if(!(bot[i].data.control_flag||bot[j].data.control_flag)&&distance<=0.45)
+                double distance=sqrt((bot[i].data.x-bot[data.num].data.x)*(bot[i].data.x-bot[data.num].data.x)+(bot[i].data.y-bot[data.num].data.y)*(bot[i].data.y-bot[data.num].data.y));
+                if(!(bot[i].data.control_flag||bot[data.num].data.control_flag)&&distance<=0.45)
                 {
                     crash=true;
-                }else if((bot[i].data.control_flag||bot[j].data.control_flag)&&distance<=0.53)
+                }else if((bot[i].data.control_flag||bot[data.num].data.control_flag)&&distance<=0.53)
                 {
                     crash=true;
                 }
