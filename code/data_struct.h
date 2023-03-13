@@ -37,18 +37,32 @@ struct command
     double arg2;
 };
 
+
+
 struct output_command
 {
     int frame;            // 当前帧
     int command_num;      // 输出的命令数
     command *out_command; // 储存命令的数组，建议采用动态内存分配空间
 };
+
+
 struct back_command
 { // 储存需要执行的命令用于返回
 
     int command_num;       // 输出的命令数
     command *back_command; // 储存命令的数组，建议采用动态内存分配空间
 };
+
+struct bot_control_command{  //机器人调度指令
+
+          int robot_num;//机器人编号
+          int ori;//起点
+          int des;//终点
+          int hash;//方案效率的哈希值
+
+};
+
 struct robot_data
 {
     int num;           // 机器人编号 [0,3]
