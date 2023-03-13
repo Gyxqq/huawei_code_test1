@@ -2,7 +2,50 @@
 #include"c_map.h"
 #include<cmath>
 back_command* robot::route_control(map& now_map){
-
+    const double PI=3.14159;
+	double delta_x, delta_y;
+	double tan_angle, angle;
+    back_command command_need;
+	//机器人与所要去的工作台的坐标变化量 
+	table *goto_table;
+	//定义地图上的工作台
+	goto_table=now_map.gettable();
+	//返回地图上的工作台 
+	back_command command_need;
+	//声明需要返回的指令 
+	command_need.command_num=0;
+	//指令个数初始化 
+	if(data.table==data.ori){
+		command_need.command_num++;
+		command_need.back_command.command="buy";
+		command_need.back_command.command[4]=data.num+'0';
+	}
+	//机器人到达起点 
+	else if(data.table==data.des){
+		command_need.command_num++;
+		command_need.back_command.command="sell";
+		command_need.back_command.command[5]=data.num+'0';
+	}
+	//机器人到达终点 
+	if(data.object==0){
+		delta_x=goto_table[des].x-data.x;
+		delta_y=goto_table[des].y-data.y;
+		tan_angle=delta_y/delta_x;
+		if(delta_x>=0){
+			angle=atan(tan_angle);
+		}
+		else if(delta_y>=0){
+			tan_angle*=-1;
+			angle=atan(tan_angle);
+			angle=PI-angle;
+		}
+		else if(delta_y<0){
+			tan_angle*=-1;
+			angle=atan(tan_angle);
+			angle=PI-angle;
+		}
+	}
+	//机器人去往起点 
 }
 bool robot::avoid_crash(robot bot[]){
     bool crash = false;
