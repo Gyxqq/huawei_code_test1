@@ -67,7 +67,7 @@ struct bot_control_command{  //机器人调度指令
           int robot_num;//机器人编号
           int ori;//起点
           int des;//终点
-
+          int hash;//方案效率的哈希值
 };
 
 
