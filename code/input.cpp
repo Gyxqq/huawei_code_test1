@@ -1,10 +1,10 @@
 /*
 实现数据输入功能(不包括初始化)
 */
-#include "data_struct.h"
+#include"c_robot.h"
 #include <iostream>
 #include <cstdio>
-bool input(int &now_frame, int &now_money, table *table_in_map, int &table_num, robot_data *robot_in_map)
+bool input(int &now_frame, int &now_money, table *table_in_map, int &table_num, robot *robot_in_map)
 {
     int state_in_decimal;
     // 十进制整数表示的原材料格状态
@@ -30,15 +30,15 @@ bool input(int &now_frame, int &now_money, table *table_in_map, int &table_num, 
     // 输入工作台的相关数据
     for (int i = 0; i < 4; i++)
     {
-        robot_in_map[i].num = i;
-        std::cin >> robot_in_map[i].table;
-        std::cin >> robot_in_map[i].object;
-        std::cin >> robot_in_map[i].time_value;
-        std::cin >> robot_in_map[i].col_value;
-        std::cin >> robot_in_map[i].ang_speed;
-        std::cin >> robot_in_map[i].speed_x >> robot_in_map[i].speed_y;
-        std::cin >> robot_in_map[i].toward;
-        std::cin >> robot_in_map[i].x >> robot_in_map[i].y;
+        robot_in_map[i].data.num= i;
+        std::cin >> robot_in_map[i].data.table;
+        std::cin >> robot_in_map[i].data.object;
+        std::cin >> robot_in_map[i].data.time_value;
+        std::cin >> robot_in_map[i].data.col_value;
+        std::cin >> robot_in_map[i].data.ang_speed;
+        std::cin >> robot_in_map[i].data.speed_x >> robot_in_map[i].data.speed_y;
+        std::cin >> robot_in_map[i].data.toward;
+        std::cin >> robot_in_map[i].data.x >> robot_in_map[i].data.y;
     }
     // 输入4个机器人的相关数据
     if (scanf("OK"))
