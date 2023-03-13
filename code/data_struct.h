@@ -1,5 +1,5 @@
 #ifndef data_struct.h
-#define data_struct.h
+#define data_struct .h
 struct table
 {
     int num;  // 工作台编号，从0开始
@@ -20,7 +20,6 @@ struct table
 
     // 储存工作台信息
 };
-
 
 struct command
 {
@@ -44,21 +43,27 @@ struct output_command
     int command_num;      // 输出的命令数
     command *out_command; // 储存命令的数组，建议采用动态内存分配空间
 };
+struct back_command
+{ // 储存需要执行的命令用于返回
 
-struct robot_data{
-   int num;           // 机器人编号 [0,3]
-  double x, y;       // 机器人位置
-  int table;         // 机器人所处的工作台ID -1表示当前没有处于任何工作台周围 从0开始
-  int object;        // 携带物品种类 0表示未携带
-  double time_value; // 时间价值系数
-  double col_value;  // 碰撞价值系数
-  double ang_speed;  // 角速度
-      double speed_x,
-      speed_y;   // 线速度
-  double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
+    int command_num;       // 输出的命令数
+    command *back_command; // 储存命令的数组，建议采用动态内存分配空间
 };
-
-
-
+struct robot_data
+{
+    int num;           // 机器人编号 [0,3]
+    double x, y;       // 机器人位置
+    int table;         // 机器人所处的工作台ID -1表示当前没有处于任何工作台周围 从0开始
+    int object;        // 携带物品种类 0表示未携带
+    double time_value; // 时间价值系数
+    double col_value;  // 碰撞价值系数
+    double ang_speed;  // 角速度
+    double speed_x,
+        speed_y;       // 线速度
+    double toward;     // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
+    bool control_flag; // 标志位,0表示机器人处于空闲状态,1表示机器人正在前往起点，2表示正在前往终点
+    int ori;           // 当前调度起点
+    int des;           // 当前调度终点
+};
 
 #endif

@@ -18,6 +18,9 @@ struct table
 
   // 储存工作台信息
 };
+
+
+
 struct command
 {
   char command[8];//指令内容 
@@ -35,6 +38,9 @@ int arg1;  //参数1
                     
 };
 
+
+
+
 struct output_command
 {
   int frame; // 当前帧
@@ -42,6 +48,31 @@ struct output_command
   command *out_command;//储存命令的数组，建议采用动态内存分配空间
   
 };
+
+
+
+
+struct back_command{   //储存需要执行的命令用于返回
+
+    int command_num; //输出的命令数
+    command * back_command;//储存命令的数组，建议采用动态内存分配空间
+
+};
+
+
+
+
+struct bot_control_command{  //机器人调度指令
+
+          int robot_num;//机器人编号
+          int ori;//起点
+          int des;//终点
+
+};
+
+
+
+
 struct robot_data{
    int num;           // 机器人编号
   double x, y;       // 机器人位置
@@ -53,7 +84,17 @@ struct robot_data{
       double speed_x,
       speed_y;   // 线速度
   double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
+  bool control_flag; //标志位,0表示机器人处于空闲状态,1表示机器人正在前往起点，2表示正在前往终点
+  int ori; //当前调度起点
+  int des;//当前调度终点
+
 };
+
+
+
+
+
+
 class map
 
 { // 地图类
@@ -71,6 +112,9 @@ public:
   int gettable_num(); // 返回工作台数量
 
 }
+
+
+
 
 class robot
 { // 机器人类
@@ -92,7 +136,19 @@ struct robot_data data; //储存机器人数据
       double speed_x,
       speed_y;   // 线速度
   double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
+     bool control_flag; // 标志位,0表示机器人处于空闲状态,1表示机器人正在前往起点，2表示正在前往终点
+    int ori;           // 当前调度起点
+    int des;           // 当前调度终点
   */
+
+back_command* route_control(map& now_map);
+//从源地址取物品送到目的地址的路线控制
+
+bool avoid_crash(robot bot[]);
+//返回五帧后是否有碰撞风险 有返回1 无返回0
+
+
+
 
 
 

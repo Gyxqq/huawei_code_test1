@@ -21,8 +21,12 @@ struct robot_data data; //储存机器人数据
       double speed_x,
       speed_y;   // 线速度
   double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
+   bool control_flag; //标志位，1表示机器人正在接受调度，0表示机器人处于空闲状态
   */
-
+back_command* route_control(map& now_map);
+//从源地址取物品送到目的地址的路线控制
+bool avoid_crash(robot bot[]);
+//返回五帧后是否有碰撞风险 有返回1 无返回0
 
 
 };
