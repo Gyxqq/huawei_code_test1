@@ -24,13 +24,14 @@ struct table
 struct command
 {
     char command[8]; // 指令内容
+    bool command_tpye;//指令类型
     /*
-    命令                        int 参数1[取值]              double 参数2
-    forward 前进                机器人ID[0，3]        前进速度[-2,6] 单位m/s
-    rotate 旋转                 机器人ID[0，3]        旋转速度[-pai,pai] 单位弧度每秒
-    buy 购买当前工作台物品       机器人ID[0，3]                 none
-    sell 售出当前物品           机器人ID[0，3]                  none
-    destroy 摧毁物品            机器人ID[0，3]                  none
+  type  命令                        int 参数1[取值]              double 参数2
+    0   forward 前进                机器人ID[0，3]        前进速度[-2,6] 单位m/s
+    0   rotate 旋转                 机器人ID[0，3]        旋转速度[-pai,pai] 单位弧度每秒
+    1   buy 购买当前工作台物品       机器人ID[0，3]                 none
+    1   sell 售出当前物品           机器人ID[0，3]                  none
+    1   destroy 摧毁物品            机器人ID[0，3]                  none
     */
 
     double arg1;

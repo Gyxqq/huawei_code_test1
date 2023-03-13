@@ -1,6 +1,7 @@
 #include"c_robot.h"
 #include"c_map.h"
 #include<cmath>
+#include"data_struct.h"
 back_command* robot::route_control(map& now_map){
     const double PI=3.14159;
 	double delta_x, delta_y;
