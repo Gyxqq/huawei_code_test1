@@ -21,7 +21,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
     for (int i = 0; i < table_num_now; i++)
     {
       if (table_now[i].type == 1 || table_now[i].type == 2 || table_now[i].type == 3)
-        continue;
+        continue; // 判断工作台是不是123号仅生产的工作台
       if (table_now[i].type == 4)
       {
         int table1 = find_near_table(table_now, table_num_now, i, 1);
@@ -35,7 +35,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
           now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
           command_count++;
         }
-         int table2 = find_near_table(table_now, table_num_now, i, 2);
+        int table2 = find_near_table(table_now, table_num_now, i, 2);
         if (table2 != -1)
         {
 
@@ -43,11 +43,199 @@ bool robot_table_control(map &now_map, robot now_bot[])
           now_command[command_count].des = table2;
           now_command[command_count].ori = i;
           now_command[command_count].robot_num = bot_num2;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
+          command_count++;
+        }
+      }
+
+      if (table_now[i].type == 5)
+      {
+        int table1 = find_near_table(table_now, table_num_now, i, 1);
+        if (table1 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table1;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
+          command_count++;
+        }
+        int table2 = find_near_table(table_now, table_num_now, i, 3);
+        if (table2 != -1)
+        {
+
+          int bot_num2 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table2;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num2;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
+          command_count++;
+        }
+      }
+
+      if (table_now[i].type == 6)
+      {
+        int table1 = find_near_table(table_now, table_num_now, i, 2);
+        if (table1 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table1;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
+          command_count++;
+        }
+        int table2 = find_near_table(table_now, table_num_now, i, 3);
+        if (table2 != -1)
+        {
+
+          int bot_num2 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table2;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num2;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
+          command_count++;
+        }
+      }
+
+      if (table_now[i].type == 7)
+      {
+        int table1 = find_near_table(table_now, table_num_now, i, 4);
+        if (table1 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table1;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
+          command_count++;
+        }
+        int table2 = find_near_table(table_now, table_num_now, i, 5);
+        if (table2 != -1)
+        {
+
+          int bot_num2 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table2;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num2;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
+          command_count++;
+        }
+
+        int table3 = find_near_table(table_now, table_num_now, i, 6);
+        if (table3 != -1)
+        {
+
+          int bot_num3 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table3;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num3;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num3], i, table3);
+          command_count++;
+        }
+      }
+
+      if (table_now[i].type == 8)
+      {
+        int table1 = find_near_table(table_now, table_num_now, i, 7);
+        if (table1 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table1;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
+          command_count++;
+        }
+      }
+      if (table_now[i].type == 9)
+      {
+        int table1 = find_near_table(table_now, table_num_now, i, 1);
+        if (table1 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table1;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
+          command_count++;
+        }
+        int table2 = find_near_table(table_now, table_num_now, i, 2);
+        if (table2 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table2;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
           now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table2);
+          command_count++;
+        }
+        int table3 = find_near_table(table_now, table_num_now, i, 3);
+        if (table3 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table3;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table3);
+          command_count++;
+        }
+        int table4 = find_near_table(table_now, table_num_now, i, 4);
+        if (table4 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table4;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table4);
+          command_count++;
+        }
+        int table5 = find_near_table(table_now, table_num_now, i, 5);
+        if (table5 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table5;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table5);
+          command_count++;
+        }
+        int table6 = find_near_table(table_now, table_num_now, i, 6);
+        if (table6 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table6;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table6);
+          command_count++;
+        }
+        int table7 = find_near_table(table_now, table_num_now, i, 7);
+        if (table7 != -1)
+        {
+
+          int bot_num1 = find_near_bot(table_now[i], now_bot);
+          now_command[command_count].des = table7;
+          now_command[command_count].ori = i;
+          now_command[command_count].robot_num = bot_num1;
+          now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table7);
           command_count++;
         }
       }
     }
+    // 生成调度指令
+    std::sort(now_command, now_command + command_count, sort1);
+    std::sort(now_command, now_command + command_count, sort2); // 排序
   }
 }
 inline int find_near_bot(table &this_table, robot bot[])
@@ -78,9 +266,13 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
   double des = 0;
   for (int i = 0; i < table_num; i++)
   {
-    if (i == now_table)
+    if (i == now_table) //判断是否是当前工作台
       continue;
-    if (tab[i].type != object_type)
+    if (tab[i].type != object_type)//判断产物的类型是否和请求类型相同
+      continue;
+    if (tab[i].out_control == 1)//判断产物是否已被调度
+      continue;
+    if (tab[i].outstats == 0)//判断输出格所否有产物
       continue;
     double now_des = pow(tab[now_table].x - tab[i].x, 2) + pow(tab[now_table].y - tab[i].y, 2);
     if (now_des >= des)
@@ -88,4 +280,12 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
   }
 
   return num; // 返回最近的有所请求物品的工作台的编号
+}
+bool sort1(bot_control_command a, bot_control_command b)
+{
+  return a.robot_num < b.robot_num;
+}
+bool sort2(bot_control_command a, bot_control_command b)
+{
+  return a.robot_num <= b.robot_num && a.hash > b.hash;
 }
