@@ -6,37 +6,28 @@
 back_command* robot::route_control(map& now_map){
     const double PI=3.14159;
 	const double min_angle=1.97392;
-	double delta_x, delta_y;
-	//机器人与所要去的工作台的坐标变化量 
-	double tan_angle, angle;
-	//计算机器人与工作台连线的角度
-	double turn_angle;
-	bool direction;
-	//判断机器人顺时针还是逆时针旋转
-	table *goto_table;
-	//定义地图上的工作台
-	goto_table=now_map.gettable();
-	//返回地图上的工作台 
-	back_command *command_need=new back_command;
-	//声明需要返回的指令 
-	command_need->command_num=0;
-	//指令个数初始化 
+	double delta_x, delta_y;		//机器人与所要去的工作台的坐标变化量 
+	double tan_angle, angle;		//计算机器人与工作台连线的角度
+	double turn_angle;				//需要旋转的角度
+	double turn_angle_positive;		//需要旋转的角度的绝对值
+	table *goto_table;				//定义地图上的工作台
+	goto_table=now_map.gettable();	//返回地图上的工作台 
+	back_command *command_need=new back_command;	//声明需要返回的指令 
+	command_need->command_num=0;					//指令个数初始化 
 	if(data.table==data.ori){
+		strcpy(command_need->back_command[command_need->command_num].command, "buy");
+		command_need->back_command[command_need->command_num].arg1=data.num;
+		command_need->back_command[command_need->command_num].command_tpye=1;
 		command_need->command_num++;
-		strcpy(command_need->back_command->command, "buy");
-		command_need->back_command->arg1=data.num;
-		command_need->back_command->command_tpye=1;
 		data.control_flag=2;
-	}
-	//机器人到达起点 
+	}	//机器人到达起点 
 	else if(data.table==data.des){
+		strcpy(command_need->back_command[command_need->command_num].command, "sell");
+		command_need->back_command[command_need->command_num].arg1=data.num;
+		command_need->back_command[command_need->command_num].command_tpye=1;
 		command_need->command_num++;
-		strcpy(command_need->back_command->command, "sell");
-		command_need->back_command->arg1=data.num;
-		command_need->back_command->command_tpye=1;
 		data.control_flag=0;
-	}
-	//机器人到达终点 
+	}	//机器人到达终点 
 	if(data.control_flag==1){
 		delta_x=goto_table[data.ori].x-data.x;
 		delta_y=goto_table[data.ori].y-data.y;
@@ -77,12 +68,30 @@ back_command* robot::route_control(map& now_map){
 	//机器人去往终点
 	turn_angle=data.toward-angle;
 	//机器人朝向与所要转到的朝向的角度的差值
-	if(turn_angle<=min_angle){
+	turn_angle_positive=(turn_angle>=0)?turn_angle:(-1*turn_angle);
+	if(turn_angle_positive<=min_angle){
+		strcpy(command_need->back_command[command_need->command_num].command, "rotate");
+		command_need->back_command[command_need->command_num].arg1=data.num;
+		command_need->back_command[command_need->command_num].arg2=0;
+		command_need->back_command[command_need->command_num].command_tpye=0;
 		command_need->command_num++;
-		strcpy(command_need->back_command->command, "rotate");
-		command_need->back_command->arg1=data.num;
-		command_need->back_command->arg2=
 	}
+	else{
+		strcpy(command_need->back_command[command_need->command_num].command, "rotate");
+		command_need->back_command[command_need->command_num].arg1=data.num;
+		if(turn_angle>0){
+			command_need->back_command[command_need->command_num].arg2=PI;
+		}
+		else{
+			command_need->back_command[command_need->command_num].arg2=-1*PI;
+		}
+		command_need->back_command[command_need->command_num].command_tpye=0;
+		command_need->command_num++;
+	}
+	strcpy(command_need->back_command[command_need->command_num].command, "forward");
+	command_need->back_command[command_need->command_num].arg1=data.num;
+	command_need->back_command[command_need->command_num].command_tpye=0;
+	command_need->command_num++;
 }
 bool robot::avoid_crash(robot bot[]){
     bool crash = false;
