@@ -4,8 +4,9 @@
 #include<cstring>
 #include"data_struct.h"
 back_command* robot::route_control(map& now_map){
-    const double PI=3.14159;
-	const double min_angle=1.97392;
+    const double PI=3.14159;		//圆周率π的值
+	const double min_angle=1.97392;	//机器人的朝向和机器人与目标工作台夹角的最小值
+	const double max_speed=6;		//机器人行驶的最大速度
 	double delta_x, delta_y;		//机器人与所要去的工作台的坐标变化量 
 	double tan_angle, angle;		//计算机器人与工作台连线的角度
 	double turn_angle;				//需要旋转的角度
@@ -45,8 +46,7 @@ back_command* robot::route_control(map& now_map){
 			angle=atan(tan_angle);
 			angle=-1*PI-angle;
 		}
-	}
-	//机器人去往起点 
+	}	//机器人去往起点 
 	else if(data.control_flag==2){
 		delta_x=goto_table[data.des].x-data.x;
 		delta_y=goto_table[data.des].y-data.y;
@@ -64,18 +64,16 @@ back_command* robot::route_control(map& now_map){
 			angle=atan(tan_angle);
 			angle=-1*PI-angle;
 		}
-	}
-	//机器人去往终点
-	turn_angle=data.toward-angle;
-	//机器人朝向与所要转到的朝向的角度的差值
-	turn_angle_positive=(turn_angle>=0)?turn_angle:(-1*turn_angle);
+	}	//机器人去往终点
+	turn_angle=data.toward-angle;	//机器人朝向与所要转到的朝向的角度的差值
+	turn_angle_positive=(turn_angle>=0)?turn_angle:(-1*turn_angle);	//计算角度差值的绝对值
 	if(turn_angle_positive<=min_angle){
 		strcpy(command_need->back_command[command_need->command_num].command, "rotate");
 		command_need->back_command[command_need->command_num].arg1=data.num;
 		command_need->back_command[command_need->command_num].arg2=0;
 		command_need->back_command[command_need->command_num].command_tpye=0;
 		command_need->command_num++;
-	}
+	}	//当差值角度小于最小角度时，角速度为0
 	else{
 		strcpy(command_need->back_command[command_need->command_num].command, "rotate");
 		command_need->back_command[command_need->command_num].arg1=data.num;
@@ -87,11 +85,14 @@ back_command* robot::route_control(map& now_map){
 		}
 		command_need->back_command[command_need->command_num].command_tpye=0;
 		command_need->command_num++;
-	}
+	}	//反之，角速度设为最大
 	strcpy(command_need->back_command[command_need->command_num].command, "forward");
 	command_need->back_command[command_need->command_num].arg1=data.num;
+	command_need->back_command[command_need->command_num].arg2=max_speed;
 	command_need->back_command[command_need->command_num].command_tpye=0;
 	command_need->command_num++;
+	//机器人以最大速度前进
+	return command_need;	//返回指令
 }
 bool robot::avoid_crash(robot bot[]){
     bool crash = false;
