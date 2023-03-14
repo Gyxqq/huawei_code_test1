@@ -18,7 +18,15 @@ bool process_control(map &now_map, robot now_bot[])
         back_command *this_back_command = new back_command[4];                    // 为输出命令申请空间
         for (int i = 0; i < 4; i++)
         {
-            back_command *com = now_bot[i].route_control(now_map);
+            back_command *com;
+            if(now_bot[i].avoid_crash(now_bot))
+            {
+                com = now_bot[i].bot_avoid_crash(now_bot);
+            }
+            else
+            {
+                com = now_bot[i].route_control(now_map);
+            }
             memcpy(this_back_command + i * sizeof(back_command), com, sizeof(back_command)); // 复制命令
         }
         output_command *this_output = output_process(this_back_command, frame);
