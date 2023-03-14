@@ -1,15 +1,14 @@
-#include"data_struct.h"
+#include "data_struct.h"
 #ifndef c_robot.h
-#define c_robot.h
+#define c_robot .h
+#include "c_map.h"
+
 class robot
 { // 机器人类
 
-
- 
-
 public:
-
-struct robot_data data; //储存机器人数据
+  robot_data data; // 储存机器人数据
+  
   /*
   int num;           // 机器人编号
   double x, y;       // 机器人位置
@@ -22,13 +21,13 @@ struct robot_data data; //储存机器人数据
       speed_y;   // 线速度
   double toward; // 朝向 与平面直角坐标系的单位圆射线方向相同 toward=0时向右
    bool control_flag; //标志位，1表示机器人正在接受调度，0表示机器人处于空闲状态
-  */
-back_command* route_control(map& now_map);
-//从源地址取物品送到目的地址的路线控制
-bool avoid_crash(robot bot[]);
-//返回五帧后是否有碰撞风险 有返回1 无返回0
+   */
 
+  back_command *route_control(map &now_map);
 
+  // 从源地址取物品送到目的地址的路线控制
+  bool avoid_crash(robot bot[]);
+  // 返回五帧后是否有碰撞风险 有返回1 无返回0
 };
 
 #endif
