@@ -20,12 +20,12 @@ bool map::mapinit(robot bot[])
       if (map[y][x] <= '9' && map[y][x] >= '0')
       {
 
-        count_table++; //工作台计数
+        count_table++; // 工作台计数
       }
     }
   } // 数据读入
   table_num = count_table;
-  table_in_map = new table[table_num];//申请工作台数组储存空间
+  table_in_map = new table[table_num]; // 申请工作台数组储存空间
   count_table = 0;
   for (int y = 0; y < 50; y++)
   {
