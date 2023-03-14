@@ -12,7 +12,7 @@ bool robot_table_control(map &now_map, robot now_bot[]); // 对未接受调度�
 output_command* output_process(back_commmand com[],int frame);//对返回指令进行加工，生成输出指令
 
 
-bool process_control(map &now_map);
+bool process_control(map &now_map,robot now_bot[]);
 /*
 流程控制
 在流程中调用input,robot_table_control,robot.route_control,output_process,output函数完成机器人控制

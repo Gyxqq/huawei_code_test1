@@ -22,6 +22,8 @@ bool robot_table_control(map &now_map, robot now_bot[])
     {
       if (table_now[i].type == 1 || table_now[i].type == 2 || table_now[i].type == 3)
         continue; // 判断工作台是不是123号仅生产的工作台
+      if (table_now[i].rest == 0)
+        continue; // 判断工作台所否处于阻塞状态
       if (table_now[i].type == 4)
       {
         int table1 = find_near_table(table_now, table_num_now, i, 1);
@@ -236,6 +238,21 @@ bool robot_table_control(map &now_map, robot now_bot[])
     // 生成调度指令
     std::sort(now_command, now_command + command_count, sort1);
     std::sort(now_command, now_command + command_count, sort2); // 排序
+    int now = -1;
+
+    for (int i = 0; i < command_count; i++)
+    {
+      if (now_command[i].robot_num != now)
+      {
+        now = now_command[i].robot_num;
+        now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
+        now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
+        now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
+      }
+      if (now_command[i].robot_num == now)
+        continue;
+    }
+    return 1;
   }
 }
 inline int find_near_bot(table &this_table, robot bot[])
@@ -245,11 +262,11 @@ inline int find_near_bot(table &this_table, robot bot[])
   for (int i = 0; i < 3; i++)
   {
 
-    if (bot[i].data.control_flag > 0)
+    if (bot[i].data.control_flag > 0) // 判断机器人所否被调度
       continue;
     else
     {
-      double now_des = pow(this_table.x - bot[i].data.x, 2) + pow(this_table.y - bot[i].data.y, 2);
+      double now_des = pow(this_table.x - bot[i].data.x, 2) + pow(this_table.y - bot[i].data.y, 2); // 计算距离
       if (now_des >= des)
       {
         num = i;
@@ -266,15 +283,15 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
   double des = 0;
   for (int i = 0; i < table_num; i++)
   {
-    if (i == now_table) //判断是否是当前工作台
+    if (i == now_table) // 判断是否是当前工作台
       continue;
-    if (tab[i].type != object_type)//判断产物的类型是否和请求类型相同
+    if (tab[i].type != object_type) // 判断产物的类型是否和请求类型相同
       continue;
-    if (tab[i].out_control == 1)//判断产物是否已被调度
+    if (tab[i].out_control == 1) // 判断产物是否已被调度
       continue;
-    if (tab[i].outstats == 0)//判断输出格所否有产物
+    if (tab[i].outstats == 0) // 判断输出格所否有产物
       continue;
-    double now_des = pow(tab[now_table].x - tab[i].x, 2) + pow(tab[now_table].y - tab[i].y, 2);
+    double now_des = pow(tab[now_table].x - tab[i].x, 2) + pow(tab[now_table].y - tab[i].y, 2); // 计算距离
     if (now_des >= des)
       num = i;
   }
@@ -287,5 +304,5 @@ bool sort1(bot_control_command a, bot_control_command b)
 }
 bool sort2(bot_control_command a, bot_control_command b)
 {
-  return a.robot_num <= b.robot_num && a.hash > b.hash;
+  return a.robot_num <= b.robot_num && a.hash > b.hash; // 排序
 }
