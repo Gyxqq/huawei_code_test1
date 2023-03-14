@@ -16,6 +16,9 @@ struct table
                    */
     bool outstats; // 产品格状态 0表示无,1表示有
 
+    bool out_control;
+    // 产品是否已被调度 1表示已被调度
+
     bool instats[8]; // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
 
     // 储存工作台信息
@@ -23,8 +26,8 @@ struct table
 
 struct command
 {
-    char command[8]; // 指令内容
-    bool command_tpye;//指令类型
+    char command[8];   // 指令内容
+    bool command_tpye; // 指令类型
     /*
   type  命令                        int 参数1[取值]              double 参数2
     0   forward 前进                机器人ID[0，3]        前进速度[-2,6] 单位m/s
@@ -38,15 +41,12 @@ struct command
     double arg2;
 };
 
-
-
 struct output_command
 {
     int frame;            // 当前帧
     int command_num;      // 输出的命令数
     command *out_command; // 储存命令的数组，建议采用动态内存分配空间
 };
-
 
 struct back_command
 { // 储存需要执行的命令用于返回
@@ -55,13 +55,13 @@ struct back_command
     command *back_command; // 储存命令的数组，建议采用动态内存分配空间
 };
 
-struct bot_control_command{  //机器人调度指令
+struct bot_control_command
+{ // 机器人调度指令
 
-          int robot_num;//机器人编号
-          int ori;//起点
-          int des;//终点
-          int hash;//方案效率的哈希值
-
+    int robot_num; // 机器人编号
+    int ori;       // 起点
+    int des;       // 终点
+    int hash;      // 方案效率的哈希值
 };
 
 struct robot_data

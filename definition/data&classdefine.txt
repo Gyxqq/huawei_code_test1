@@ -14,6 +14,8 @@ struct table
                  */
   bool outstats; // 产品格状态 0表示无,1表示有
 
+  bool out_control; //产品是否已被调度 1表示已被调度
+
   bool instats[8]; // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
 
   // 储存工作台信息

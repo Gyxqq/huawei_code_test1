@@ -6,7 +6,7 @@ bool output(output_command *out_put_command); // 对储存的需要输出的数�
 int value_hash(map now_map,robot now_bot,int ori,int des);
 //规划方案哈希值计算，哈希值越大规划方案的利润越大
 
-bool robot_table_control(map &now_map, robot &now_bot); // 对未接受调度的机器人进行调度，方式为在函数中对机器人的control_flag,ori和des进行设置,生成调度方案并利用value_hash选择最优方案
+bool robot_table_control(map &now_map, robot now_bot[]); // 对未接受调度的机器人进行调度，方式为在函数中对机器人的control_flag,ori和des进行设置,生成调度方案并利用value_hash选择最优方案
 //可以利用bot_control_command结构体储存调度指令（建议）
 
 output_command* output_process(back_commmand com[],int frame);//对返回指令进行加工，生成输出指令
