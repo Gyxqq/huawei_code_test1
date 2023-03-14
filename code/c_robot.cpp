@@ -87,24 +87,26 @@ back_command* robot::route_control(map& now_map){
 bool robot::avoid_crash(robot bot[]){
     bool crash = false;
     double time =0.02;//一帧在判题器中的时间
+	robot_data temp_bot[4];
     for(int frame=0;frame<5;frame++)
     {
         for(int i=0;i<4;i++)//计算所有机器人下一帧大概的位置
         {
-            double v=sqrt(bot[i].data.speed_x*bot[i].data.speed_x+bot[i].data.speed_y*bot[i].data.speed_y);
-            bot[i].data.x=bot[i].data.x+v*cos(bot[i].data.toward)* time;
-            bot[i].data.y=bot[i].data.y+v*sin(bot[i].data.toward)* time;
-            bot[i].data.toward=bot[i].data.toward+bot[i].data.ang_speed*time;
+			temp_bot[i]=bot[i].data;
+            double v=sqrt(temp_bot[i].speed_x*temp_bot[i].speed_x+temp_bot[i].speed_y*temp_bot[i].speed_y);
+            temp_bot[i].x=temp_bot[i].x+v*cos(temp_bot[i].toward)* time;
+            temp_bot[i].y=temp_bot[i].y+v*sin(temp_bot[i].toward)* time;
+            temp_bot[i].toward=temp_bot[i].toward+temp_bot[i].ang_speed*time;
         }
         for(int i=0;i<4;i++)//分别判断各个机器人是否可能碰撞（已考虑体积变大的情况）
         {
             if(i!=data.num)
             {
-                double distance=sqrt((bot[i].data.x-bot[data.num].data.x)*(bot[i].data.x-bot[data.num].data.x)+(bot[i].data.y-bot[data.num].data.y)*(bot[i].data.y-bot[data.num].data.y));
-                if(!(bot[i].data.control_flag||bot[data.num].data.control_flag)&&distance<=0.45)
+                double distance=sqrt((temp_bot[i].x-temp_bot[data.num].x)*(temp_bot[i].x-temp_bot[data.num].x)+(temp_bot[i].y-temp_bot[data.num].y)*(bot[i].data.y-bot[data.num].data.y));
+                if(!(temp_bot[i].control_flag||temp_bot[data.num].control_flag)&&distance<=0.45)
                 {
                     crash=true;
-                }else if((bot[i].data.control_flag||bot[data.num].data.control_flag)&&distance<=0.53)
+                }else if((temp_bot[i].control_flag||temp_bot[data.num].control_flag)&&distance<=0.53)
                 {
                     crash=true;
                 }
@@ -112,4 +114,8 @@ bool robot::avoid_crash(robot bot[]){
         }
     }
     return crash;
+}
+back_command* robot::bot_avoid_crash()
+{
+	
 }
