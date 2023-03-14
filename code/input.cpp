@@ -4,15 +4,15 @@
 #include"c_robot.h"
 #include <iostream>
 #include <cstdio>
-bool input(int &now_frame, int &now_money, table *table_in_map, int &table_num, robot *robot_in_map)
+bool input(int &now_frame, int &now_money, table *table_in_map, int* table_num, robot *robot_in_map)
 {
     int state_in_decimal;
     // 十进制整数表示的原材料格状态
     std::cin >> now_frame >> now_money;
     // 第一行：输入帧序号和当前金钱数
-    std::cin >> table_num;
+    std::cin >> *table_num;
     // 第二行：输入厂上的工作台数量
-    for (int i = 0; i < table_num; i++)
+    for (int i = 0; i < *table_num; i++)
     {
         table_in_map[i].num = i;
         std::cin >> table_in_map[i].type;

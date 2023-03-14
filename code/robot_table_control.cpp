@@ -9,7 +9,7 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
 bool robot_table_control(map &now_map, robot now_bot[])
 {
   table *table_now = now_map.gettable();
-  int table_num_now = now_map.gettable_num();
+  int table_num_now = *now_map.gettable_num();
   bot_control_command *final_bot_control = new bot_control_command[4]; // 存放机器人调度指令
   if (now_bot[0].data.control_flag > 0 && now_bot[1].data.control_flag > 0 && now_bot[2].data.control_flag > 0 && now_bot[3].data.control_flag > 0)
     return 0; // 无机器人空闲返回0

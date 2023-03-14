@@ -114,7 +114,7 @@ public:
 
   table *gettable(); // 返回工作台数组
 
-  int gettable_num(); // 返回工作台数量
+  int* gettable_num(); // 返回工作台数量
 
 }
 
