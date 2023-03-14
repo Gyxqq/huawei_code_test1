@@ -48,7 +48,7 @@ table *map::gettable()
 
   return table_in_map;
 }
-int map::gettable_num()
+int* map::gettable_num()
 {
-  return table_num;
+  return &table_num;
 }
