@@ -27,8 +27,8 @@ back_command* route_control(map& now_map);
 //从源地址取物品送到目的地址的路线控制
 bool avoid_crash(robot bot[]);
 //返回五帧后是否有碰撞风险 有返回1 无返回0
-
-
+back_command* bot_avoid_crash();
+//生成小车避障是需要的指令集
 };
 
 #endif
