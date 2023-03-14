@@ -130,24 +130,25 @@ back_command* robot::bot_avoid_crash(robot bot[])
 {
 	const int pai=3.14159;
 	back_command *back=new back_command;
-	back=NULL;
-	bool flag=avoid_crash(bot);
-	if(flag==1)
+	if(bot[data.num].data.ang_speed>=0)
 	{
-		if(bot[data.num].data.ang_speed>=0)
-		{
-			back->command_num=1;
-			back->back_command[0].command_tpye=0;
-			strcpy(back->back_command[0].command,"rotate");
-			back->back_command[0].arg1=data.num;
-			back->back_command[0].arg2=-pai;
-		}else{
-			back->command_num=1;
-			back->back_command[0].command_tpye=0;
-			strcpy(back->back_command[0].command,"rotate");
-			back->back_command[0].arg1=data.num;
-			back->back_command[0].arg2=pai;
-		}
+		back->command_num=2;
+		back->back_command[0].command_tpye=0;
+		strcpy(back->back_command[0].command,"forward");
+		back->back_command[0].arg1=data.num;
+		back->back_command[0].arg2=6;
+		strcpy(back->back_command[1].command,"rotate");
+		back->back_command[1].arg1=data.num;
+		back->back_command[1].arg2=-pai;
+	}else{
+		back->command_num=2;
+		back->back_command[0].command_tpye=0;
+		strcpy(back->back_command[0].command,"forward");
+		back->back_command[0].arg1=data.num;
+		back->back_command[0].arg2=6;
+		strcpy(back->back_command[1].command,"rotate");
+		back->back_command[1].arg1=data.num;
+		back->back_command[1].arg2=pai;
 	}
 	return back;
 }
