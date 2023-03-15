@@ -65,7 +65,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
@@ -114,7 +114,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
@@ -161,7 +161,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
@@ -210,7 +210,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
@@ -231,7 +231,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table3)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
