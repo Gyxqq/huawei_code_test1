@@ -1,5 +1,5 @@
 #ifndef data_struct.h
-#define data_struct .h
+#define data_struct.h
 struct table
 {
     int num;  // 工作台编号，从0开始
@@ -8,11 +8,11 @@ struct table
     double x, y; // 工作台位置
 
     int rest;      /*
-     
+
                    -1:表示没有生产
                    0:表示生产因为输出格满而阻塞
                    >=0:表示剩余生产的帧数
-     
+
                    */
     bool outstats; // 产品格状态 0表示无,1表示有
 
@@ -45,14 +45,14 @@ struct output_command
 {
     int frame;            // 当前帧
     int command_num;      // 输出的命令数
-    command *out_command; // 储存命令的数组，建议采用动态内存分配空间
+    command* out_command; // 储存命令的数组，建议采用动态内存分配空间
 };
 
 struct back_command
 { // 储存需要执行的命令用于返回
 
     int command_num;       // 输出的命令数
-    command *back_command; // 储存命令的数组，建议采用动态内存分配空间
+    command* back_command; // 储存命令的数组，建议采用动态内存分配空间
 };
 
 struct bot_control_command
@@ -80,5 +80,5 @@ struct robot_data
     int ori;           // 当前调度起点
     int des;           // 当前调度终点
 };
-
 #endif
+

@@ -1,10 +1,7 @@
-/*
-实现数据输入功能(不包括初始化)
-*/
+#include"data_struct.h"
+#include<iostream>
 #include"c_robot.h"
-#include <iostream>
-#include <cstdio>
-bool input(int &now_frame, int &now_money, table *table_in_map, int* table_num, robot *robot_in_map)
+bool input(int& now_frame, int& now_money, table* table_in_map, int* table_num, robot* robot_in_map)
 {
     int state_in_decimal;
     // 十进制整数表示的原材料格状态
@@ -12,6 +9,7 @@ bool input(int &now_frame, int &now_money, table *table_in_map, int* table_num, 
     // 第一行：输入帧序号和当前金钱数
     std::cin >> *table_num;
     // 第二行：输入厂上的工作台数量
+    
     for (int i = 0; i < *table_num; i++)
     {
         table_in_map[i].num = i;
@@ -30,7 +28,7 @@ bool input(int &now_frame, int &now_money, table *table_in_map, int* table_num, 
     // 输入工作台的相关数据
     for (int i = 0; i < 4; i++)
     {
-        robot_in_map[i].data.num= i;
+        robot_in_map[i].data.num = i;
         std::cin >> robot_in_map[i].data.table;
         std::cin >> robot_in_map[i].data.object;
         std::cin >> robot_in_map[i].data.time_value;
