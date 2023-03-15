@@ -281,13 +281,13 @@ bool robot_table_control(map &now_map, robot now_bot[])
 
         for (int i = 0; i < command_count; i++)
         {
-            if (now_command[i].robot_num != now)
+            if (now_command[i].robot_num > now)
             {
                 now = now_command[i].robot_num;
                 now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
                 now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
                 now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
-                std::cerr<<now<<" "<<now_command[i].ori<<" "<<now_command[i].des<<std::endl;
+                std::cerr<<"robot_control "<<now<<" "<<now_command[i].ori<<" "<<now_command[i].des<<std::endl;
             }
             if (now_command[i].robot_num == now)
                 continue;
@@ -301,7 +301,7 @@ inline int find_near_bot(table &this_table, robot bot[])
 {
     int num = 0;
     double des = 0;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
     {
 
         if (bot[i].data.control_flag > 0) // 判断机器人所否被调度
@@ -337,7 +337,7 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
         if (now_des >= des)
             num = i;
     }
-    std::cerr<<"now_table "<<now_table<<" table_found "<<num<<std::endl;
+    std::cerr<<"now_table "<<now_table<<"now_table_type="<<tab[now_table].type<<" table_found "<<num<<std::endl;
     return num; // 返回最近的有所请求物品的工作台的编号
 }
 bool sort1(bot_control_command a, bot_control_command b)
