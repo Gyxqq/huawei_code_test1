@@ -1,7 +1,9 @@
 #include"data_struct.h"
 #include<string.h>
+#include<iostream>
 output_command* output_process(back_command com[], int frame)
 {
+    std::cerr<<"output_process"<<std::endl;
     int all_num = 0;
     for (int i = 0; i < 4; i++)
     {

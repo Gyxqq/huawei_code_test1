@@ -5,6 +5,7 @@
 #include<string.h>
 back_command* robot::route_control(map1& now_map)
 {
+    std::cerr<<"route_control"<<std::endl;
     const double PI = 3.14159;                     // 圆周率π的值
     const double min_angle = 1.97392;              // 机器人的朝向和机器人与目标工作台夹角的最小值
     const double max_tan_angle=100;
@@ -131,6 +132,7 @@ back_command* robot::route_control(map1& now_map)
 };
 bool robot::avoid_crash(robot bot[])
 {
+    std::cerr<<"avoid_crash "<<std::endl;
     bool crash = false;
     double time = 0.02; // 一帧在判题器中的时间
     robot_data temp_bot[4];
@@ -165,6 +167,7 @@ bool robot::avoid_crash(robot bot[])
 
 back_command* robot::bot_avoid_crash(robot bot[])
 {
+    std::cerr<<"bot_avoid_crash "<<std::endl;
     const int pai = 3.14159;
     back_command* back = new back_command;
     if (bot[data.num].data.ang_speed >= 0)
