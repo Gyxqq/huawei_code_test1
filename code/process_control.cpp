@@ -19,10 +19,10 @@ bool process_control(map& now_map, robot now_bot[])
         for (int i = 0; i < 4; i++)
         {
             back_command* com;
-           // std::cerr<<"gyx1 ";
+            std::cerr<<"gyx1 ";
             if (now_bot[i].avoid_crash(now_bot))
             {
-               // std::cerr<<"gyx2 ";
+               std::cerr<<"gyx2 ";
                 com = now_bot[i].bot_avoid_crash(now_bot);
             }
             else
@@ -30,11 +30,11 @@ bool process_control(map& now_map, robot now_bot[])
                 map1 now_map1;
                 now_map1.table_in_map = now_map.gettable();
                 now_map1.table_num = *now_map.gettable_num();
-              //  std::cerr<<"gyx3 ";
+                std::cerr<<"gyx3 ";
                 com = now_bot[i].route_control(now_map1);
-                //std::cerr<<"gyx4 ";
+                std::cerr<<"gyx4 ";
             }
-            memcpy(this_back_command + i * sizeof(back_command), com, sizeof(back_command)); // 复制命令
+           memcpy(this_back_command + i * sizeof(back_command), com, sizeof(back_command)); // 复制命令
         }
         output_command* this_output = output_process(this_back_command, frame);
         output(this_output);

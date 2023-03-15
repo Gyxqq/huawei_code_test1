@@ -1,4 +1,5 @@
 #include"c_map1.h"
+#include<iostream>
 table* map1::gettable()
 {
 
@@ -6,5 +7,6 @@ table* map1::gettable()
 }
 int* map1::gettable_num()
 {
+    std::cerr<<"map1"<<std::endl;
     return &table_num;
 }

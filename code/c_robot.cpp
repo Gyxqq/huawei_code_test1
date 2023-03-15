@@ -14,11 +14,16 @@ back_command* robot::route_control(map1& now_map)
     double tan_angle, angle;                       // 计算机器人与工作台连线的角度
     double turn_angle;                             // 需要旋转的角度
     double turn_angle_positive;                    // 需要旋转的角度的绝对值
-    table* goto_table;                             // 定义地图上的工作台
-    goto_table = now_map.gettable();               // 返回地图上的工作台
+    table* goto_table;
+                               // 定义地图上的工作台
+    goto_table = now_map.gettable(); 
+                  // 返回地图上的工作台
     back_command* command_need = new back_command; // 声明需要返回的指令
+    std::cerr<<"gyx "<<std::endl;  
     command_need->command_num = 0;                 // 指令个数初始化
-    std::cerr<<"gyx ";
+    
+
+    std::cerr<<"flag="<<data.control_flag<<std::endl;
     if (data.table == data.ori)
     {
         std::cerr<<"gyx1 ";
@@ -128,6 +133,7 @@ back_command* robot::route_control(map1& now_map)
     command_need->back_command[command_need->command_num].command_tpye = 0;
     command_need->command_num++;
     // 机器人以最大速度前进
+     std::cerr<<"route_control"<<std::endl;
     return command_need; // 返回指令
 };
 bool robot::avoid_crash(robot bot[])
