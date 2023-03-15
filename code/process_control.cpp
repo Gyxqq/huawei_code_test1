@@ -35,7 +35,8 @@ bool process_control(map& now_map, robot now_bot[])
                 com = now_bot[i].route_control(now_map1);
                 std::cerr<<"gyx4 ";
             }
-           memcpy(this_back_command + i * sizeof(back_command), com, sizeof(back_command)); // 复制命令
+          memcpy(&this_back_command[i],com,sizeof(back_command));
+           
         }
         output_command* this_output = output_process(this_back_command, frame);
         output(this_output);

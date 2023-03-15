@@ -41,6 +41,7 @@ bool map::mapinit(robot bot[])
                 table_in_map[count_table].x = x;
                 table_in_map[count_table].y = y;
                 table_in_map[count_table].outstats = 0;
+                table_in_map[count_table].out_control=0;
                 for (int i1 = 0; i1 < 8; i1++)
                 {
                     table_in_map[count_table].instats[i1] = 0;

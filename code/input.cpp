@@ -6,6 +6,7 @@ bool input(int& now_frame, int& now_money, table* table_in_map, int* table_num, 
     int state_in_decimal;
     // 十进制整数表示的原材料格状态
     std::cin >> now_frame >> now_money;
+    std::cerr<<"frame="<<now_frame<<std::endl;
     // 第一行：输入帧序号和当前金钱数
     std::cin >> *table_num;
     // 第二行：输入厂上的工作台数量

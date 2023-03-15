@@ -96,13 +96,15 @@ back_command* robot::route_control(map1& now_map)
     }                                                                         // 机器人去往终点
     turn_angle = data.toward - angle;                                         // 机器人朝向与所要转到的朝向的角度的差值
     turn_angle_positive = (turn_angle >= 0) ? turn_angle : (-1 * turn_angle); // 计算角度差值的绝对值
-    std::cerr<<"gyx5 ";
+    std::cerr<<"gyx5 controlflag"<<data.control_flag<<std::endl;
     if(data.control_flag==0){
         strcpy(command_need->back_command[command_need->command_num].command, "rotate");
         command_need->back_command[command_need->command_num].arg1 = data.num;
         command_need->back_command[command_need->command_num].arg2 = 0;
         command_need->back_command[command_need->command_num].command_tpye = 0;
         command_need->command_num++;
+        
+        return command_need;
     }
     else if (turn_angle_positive <= min_angle)
     {
