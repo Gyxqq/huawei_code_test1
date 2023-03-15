@@ -7,7 +7,7 @@ back_command* robot::route_control(map1& now_map)
 {
     std::cerr<<"route_control"<<std::endl;
     const double PI = 3.14159;                     // 圆周率π的值
-    const double min_angle = 1.97392;              // 机器人的朝向和机器人与目标工作台夹角的最小值
+    const double min_angle = 0.001;              // 机器人的朝向和机器人与目标工作台夹角的最小值
     const double max_tan_angle=100;
     const double max_speed = 6;                    // 机器人行驶的最大速度
     double delta_x, delta_y;                       // 机器人与所要去的工作台的坐标变化量
@@ -48,13 +48,13 @@ back_command* robot::route_control(map1& now_map)
         delta_x = goto_table[data.ori].x - data.x;
         delta_y = goto_table[data.ori].y - data.y;
         tan_angle = delta_y / delta_x;
-        if(tan_angle>=max_tan_angle||tan_angle<=-1*max_tan_angle){
-            angle=PI/2;
-            if(delta_y<0){
-                angle*=(-1);
-            }
-        }
-        else if (delta_x >= 0)
+        // if(tan_angle>=max_tan_angle||tan_angle<=-1*max_tan_angle){
+        //     angle=PI/2;
+        //     if(delta_y<0){
+        //         angle*=(-1);
+        //     }
+        // }
+        if (delta_x >= 0)
         {
             angle = atan(tan_angle);
         }
@@ -95,7 +95,16 @@ back_command* robot::route_control(map1& now_map)
         }
     }                                                                         // 机器人去往终点
     turn_angle = data.toward - angle;                                         // 机器人朝向与所要转到的朝向的角度的差值
-    turn_angle_positive = (turn_angle >= 0) ? turn_angle : (-1 * turn_angle); // 计算角度差值的绝对值
+    if(turn_angle>PI){
+        turn_angle=turn_angle-2*PI;
+    }
+    else if(turn_angle<-1*PI){
+        turn_angle=2*PI+turn_angle;
+    }
+    turn_angle_positive = (turn_angle >= 0) ? turn_angle : (-1 * turn_angle);
+    std::cerr<<"\nangle="<<angle<<std::endl;
+    std::cerr<<"\nturn_angle="<<turn_angle<<std::endl;
+     // 计算角度差值的绝对值
     std::cerr<<"gyx5 controlflag"<<data.control_flag<<std::endl;
     if(data.control_flag==0){
         strcpy(command_need->back_command[command_need->command_num].command, "rotate");

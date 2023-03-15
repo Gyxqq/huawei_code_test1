@@ -72,25 +72,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 1
 rotate 0 0
 rotate 1 0
@@ -171,25 +191,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 2
 rotate 0 0
 rotate 1 0
@@ -270,25 +310,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 3
 rotate 0 0
 rotate 1 0
@@ -369,25 +429,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 4
 rotate 0 0
 rotate 1 0
@@ -468,25 +548,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 5
 rotate 0 0
 rotate 1 0
@@ -567,25 +667,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 6
 rotate 0 0
 rotate 1 0
@@ -666,25 +786,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 7
 rotate 0 0
 rotate 1 0
@@ -765,25 +905,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 8
 rotate 0 0
 rotate 1 0
@@ -864,25 +1024,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 9
 rotate 0 0
 rotate 1 0
@@ -963,25 +1143,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 10
 rotate 0 0
 rotate 1 0
@@ -1062,25 +1262,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 11
 rotate 0 0
 rotate 1 0
@@ -1161,25 +1381,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 12
 rotate 0 0
 rotate 1 0
@@ -1260,25 +1500,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 13
 rotate 0 0
 rotate 1 0
@@ -1359,25 +1619,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 14
 rotate 0 0
 rotate 1 0
@@ -1458,25 +1738,45 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 15
 rotate 0 0
 rotate 1 0
@@ -1557,26 +1857,760 @@ gyx1 avoid_crash
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 gyx1 avoid_crash 
 gyx3 route_control
 gyx 
 flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
 gyx5 controlflag0
 gyx4 output_process
 all_num 4
 output
+
+
+
+
 out_frame= 16
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+17 200000
+31
+1 1.25 48.75 33 0 0
+2 3.25 48.75 33 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 33 0 0
+3 27.75 48.75 33 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 33 0 0
+1 48.75 48.75 33 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 33 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 33 0 0
+1 24.75 31.75 33 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 33 0 0
+2 9.25 16.25 33 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 33 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 33 0 0
+2 3.25 1.25 33 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 33 0 0
+3 27.75 1.25 33 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 33 0 0
+1 48.75 1.25 33 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=17
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 17
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+18 200000
+31
+1 1.25 48.75 32 0 0
+2 3.25 48.75 32 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 32 0 0
+3 27.75 48.75 32 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 32 0 0
+1 48.75 48.75 32 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 32 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 32 0 0
+1 24.75 31.75 32 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 32 0 0
+2 9.25 16.25 32 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 32 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 32 0 0
+2 3.25 1.25 32 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 32 0 0
+3 27.75 1.25 32 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 32 0 0
+1 48.75 1.25 32 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=18
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 18
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+19 200000
+31
+1 1.25 48.75 31 0 0
+2 3.25 48.75 31 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 31 0 0
+3 27.75 48.75 31 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 31 0 0
+1 48.75 48.75 31 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 31 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 31 0 0
+1 24.75 31.75 31 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 31 0 0
+2 9.25 16.25 31 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 31 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 31 0 0
+2 3.25 1.25 31 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 31 0 0
+3 27.75 1.25 31 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 31 0 0
+1 48.75 1.25 31 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=19
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 19
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+20 200000
+31
+1 1.25 48.75 30 0 0
+2 3.25 48.75 30 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 30 0 0
+3 27.75 48.75 30 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 30 0 0
+1 48.75 48.75 30 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 30 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 30 0 0
+1 24.75 31.75 30 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 30 0 0
+2 9.25 16.25 30 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 30 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 30 0 0
+2 3.25 1.25 30 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 30 0 0
+3 27.75 1.25 30 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 30 0 0
+1 48.75 1.25 30 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=20
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 20
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+21 200000
+31
+1 1.25 48.75 29 0 0
+2 3.25 48.75 29 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 29 0 0
+3 27.75 48.75 29 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 29 0 0
+1 48.75 48.75 29 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 29 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 29 0 0
+1 24.75 31.75 29 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 29 0 0
+2 9.25 16.25 29 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 29 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 29 0 0
+2 3.25 1.25 29 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 29 0 0
+3 27.75 1.25 29 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 29 0 0
+1 48.75 1.25 29 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=21
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 21
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+22 200000
+31
+1 1.25 48.75 28 0 0
+2 3.25 48.75 28 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 28 0 0
+3 27.75 48.75 28 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 28 0 0
+1 48.75 48.75 28 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 28 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 28 0 0
+1 24.75 31.75 28 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 28 0 0
+2 9.25 16.25 28 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 28 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 28 0 0
+2 3.25 1.25 28 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 28 0 0
+3 27.75 1.25 28 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 28 0 0
+1 48.75 1.25 28 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=22
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+
+angle=3.1729e-317
+
+turn_angle=-3.1729e-317
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+
+
+
+
+out_frame= 22
 rotate 0 0
 rotate 1 0
 rotate 2 0
