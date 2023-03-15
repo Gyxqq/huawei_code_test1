@@ -19,7 +19,7 @@ g++ robot_table_control.cpp -c -o robot_table_control.o
 timeout /T 2
 g++ value_hash.cpp -c -o hash.o
 timeout /T 2
-g++ main.o map.o map1.o robot.o input.o output_process.o output.o process_control.o robot_table_control.o hash.o -o main.exe
+g++ main.o map.o map1.o robot.o input.o output_process.o output.o process_control.o robot_table_control.o hash.o -g -o main.exe
 timeout /T 2
 del *.o
 del outlog.txt
