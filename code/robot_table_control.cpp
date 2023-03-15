@@ -24,7 +24,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
         std::cerr << "go1 ";
         int command_num = table_num_now * 2 + 7; // 可能的指令数目
         bot_control_command *now_command = new bot_control_command[command_num];
-        int command_count; // 目前指令数
+        int command_count=0; // 目前指令数
         for (int i = 0; i < table_num_now; i++)
         {
             std::cerr<<"& ";
@@ -273,6 +273,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
             }
         }
         // 生成调度指令
+        std::cerr<<"command_num= "<<command_count<<std::endl;
         if(command_count==0)return 0;
         std::sort(now_command, now_command + command_count, sort1);
         std::sort(now_command, now_command + command_count, sort2); // 排序
@@ -292,6 +293,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                 continue;
         }
         std::cerr<<"robot_table_control_over"<<std::endl;
+        delete[] now_command;
         return 1;
     }
 }

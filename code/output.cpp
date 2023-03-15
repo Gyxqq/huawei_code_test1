@@ -22,6 +22,8 @@ bool output(output_command* out_put_command)
     }
     std::cout << "OK"<<std::endl;
     std::cerr << "OK"<<std::endl;
+
     delete[] out_put_command->out_command;
+        std::cerr<<"output_over"<<std::endl;
     return 1;
 }

@@ -1,6 +1,7 @@
 #include"data_struct.h"
 #include"c_map.h"
 #include"function.h"
+#include<string.h>
 bool process_control(map& now_map, robot now_bot[])
 {
     while (1)

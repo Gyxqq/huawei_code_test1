@@ -12,8 +12,8 @@ back_command* robot::route_control(map1& now_map)
     const double max_speed = 6;                    // 机器人行驶的最大速度
     double delta_x, delta_y;                       // 机器人与所要去的工作台的坐标变化量
     double tan_angle, angle;                       // 计算机器人与工作台连线的角度
-    double turn_angle;                             // 需要旋转的角度
-    double turn_angle_positive;                    // 需要旋转的角度的绝对值
+    double turn_angle=0;                             // 需要旋转的角度
+    double turn_angle_positive=0;                    // 需要旋转的角度的绝对值
     table* goto_table;
                                // 定义地图上的工作台
     goto_table = now_map.gettable(); 
@@ -21,7 +21,7 @@ back_command* robot::route_control(map1& now_map)
     back_command* command_need = new back_command; // 声明需要返回的指令
     std::cerr<<"gyx "<<std::endl;  
     command_need->command_num = 0;                 // 指令个数初始化
-    
+    command_need->back_command=new command[8];
 
     std::cerr<<"flag="<<data.control_flag<<std::endl;
     if (data.table == data.ori)

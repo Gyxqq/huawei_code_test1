@@ -52,7 +52,8 @@ struct back_command
 { // 储存需要执行的命令用于返回
 
     int command_num;       // 输出的命令数
-    command* back_command; // 储存命令的数组，建议采用动态内存分配空间
+    command* back_command; 
+    // 储存命令的数组，建议采用动态内存分配空间
 };
 
 struct bot_control_command
