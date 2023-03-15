@@ -1286,3 +1286,300 @@ rotate 2 0
 rotate 3 0
 OK
 output_over
+14 200000
+31
+1 1.25 48.75 36 0 0
+2 3.25 48.75 36 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 36 0 0
+3 27.75 48.75 36 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 36 0 0
+1 48.75 48.75 36 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 36 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 36 0 0
+1 24.75 31.75 36 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 36 0 0
+2 9.25 16.25 36 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 36 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 36 0 0
+2 3.25 1.25 36 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 36 0 0
+3 27.75 1.25 36 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 36 0 0
+1 48.75 1.25 36 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=14
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+out_frame= 14
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+15 200000
+31
+1 1.25 48.75 35 0 0
+2 3.25 48.75 35 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 35 0 0
+3 27.75 48.75 35 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 35 0 0
+1 48.75 48.75 35 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 35 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 35 0 0
+1 24.75 31.75 35 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 35 0 0
+2 9.25 16.25 35 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 35 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 35 0 0
+2 3.25 1.25 35 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 35 0 0
+3 27.75 1.25 35 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 35 0 0
+1 48.75 1.25 35 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=15
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+out_frame= 15
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over
+16 200000
+31
+1 1.25 48.75 34 0 0
+2 3.25 48.75 34 0 0
+4 5.25 48.75 -1 0 0
+2 22.25 48.75 34 0 0
+3 27.75 48.75 34 0 0
+5 44.75 48.75 -1 0 0
+3 46.75 48.75 34 0 0
+1 48.75 48.75 34 0 0
+6 24.75 39.75 -1 0 0
+2 9.25 34.25 34 0 0
+5 13.25 34.25 -1 0 0
+4 36.75 34.25 -1 0 0
+3 40.75 34.25 34 0 0
+1 24.75 31.75 34 0 0
+7 17.25 25.25 -1 0 0
+8 24.75 25.25 -1 0 0
+7 32.25 25.25 -1 0 0
+1 24.75 18.75 34 0 0
+2 9.25 16.25 34 0 0
+5 13.25 16.25 -1 0 0
+4 36.75 16.25 -1 0 0
+3 40.75 16.25 34 0 0
+6 24.75 10.75 -1 0 0
+1 1.25 1.25 34 0 0
+2 3.25 1.25 34 0 0
+4 5.25 1.25 -1 0 0
+2 22.25 1.25 34 0 0
+3 27.75 1.25 34 0 0
+5 44.75 1.25 -1 0 0
+3 46.75 1.25 34 0 0
+1 48.75 1.25 34 0 0
+-1 0 0 0 0 0 0 0 24.75 38.75
+-1 0 0 0 0 0 0 0 24.75 36.75
+-1 0 0 0 0 0 0 0 24.75 34.25
+-1 0 0 0 0 0 0 0 24.75 29.25
+OK
+process_control frame=16
+robot_table_control 
+table_num_now31
+go1 & & & now_table 2now_table_type=4 table_found -1
+now_table 2now_table_type=4 table_found -1
+& & & now_table 5now_table_type=5 table_found -1
+now_table 5now_table_type=5 table_found -1
+& & & now_table 8now_table_type=6 table_found -1
+now_table 8now_table_type=6 table_found -1
+& & now_table 10now_table_type=5 table_found -1
+now_table 10now_table_type=5 table_found -1
+& now_table 11now_table_type=4 table_found -1
+now_table 11now_table_type=4 table_found -1
+& & & now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+now_table 14now_table_type=7 table_found -1
+& now_table 15now_table_type=8 table_found -1
+& now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+now_table 16now_table_type=7 table_found -1
+& & & now_table 19now_table_type=5 table_found -1
+now_table 19now_table_type=5 table_found -1
+& now_table 20now_table_type=4 table_found -1
+now_table 20now_table_type=4 table_found -1
+& & now_table 22now_table_type=6 table_found -1
+now_table 22now_table_type=6 table_found -1
+& & & now_table 25now_table_type=4 table_found -1
+now_table 25now_table_type=4 table_found -1
+& & & now_table 28now_table_type=5 table_found -1
+now_table 28now_table_type=5 table_found -1
+& & command_num= 0
+gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 gyx1 avoid_crash 
+gyx3 route_control
+gyx 
+flag=0
+gyx5 controlflag0
+gyx4 output_process
+all_num 4
+output
+out_frame= 16
+rotate 0 0
+rotate 1 0
+rotate 2 0
+rotate 3 0
+OK
+output_over

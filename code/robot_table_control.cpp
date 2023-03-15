@@ -414,10 +414,12 @@ bool robot_table_control(map &now_map, robot now_bot[])
         {
             if (now_command[i].robot_num > now)
             {
+                
                 now = now_command[i].robot_num;
                 now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
                 now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
                 now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
+                table_now[now_command[i].des].out_control=1;
                 std::cerr << "robot_control " << now << " " << now_command[i].ori << " " << now_command[i].des << std::endl;
             }
             if (now_command[i].robot_num == now)
