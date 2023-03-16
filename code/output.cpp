@@ -12,8 +12,9 @@ bool output(output_command* out_put_command)
     {
         std::cout << out_put_command->out_command[i].command << " "
 
-            << out_put_command->out_command[i].arg1 << " "
-            << out_put_command->out_command[i].arg2 << std::endl;
+            << out_put_command->out_command[i].arg1 << " ";
+            if(out_put_command->out_command[i].command_tpye==0)std::cout<< out_put_command->out_command[i].arg2;
+            std::cout<< std::endl;
 
             std::cerr << out_put_command->out_command[i].command << " "
         
