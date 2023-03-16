@@ -2,13 +2,13 @@
 #include"c_map.h"
 #include"function.h"
 #include<string.h>
-//#include<Windows.h>
+#include<Windows.h>
 bool process_control(map& now_map, robot now_bot[])
 {
     while (1)
     {
 
-        //Sleep(100);
+        Sleep(50);
         int frame = 0;
         int money = 0;
         input(frame, money, now_map.gettable(), now_map.gettable_num(), now_bot);

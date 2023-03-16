@@ -14,6 +14,7 @@ bool input(int& now_frame, int& now_money, table* table_in_map, int* table_num, 
     std::cerr <<*table_num<<std::endl;
     for (int i = 0; i < *table_num; i++)
     {
+      std::cerr<<"table_id "<<table_in_map[i].num<<" table_type"<<table_in_map[i].type<<std::endl;
         table_in_map[i].num = i;
         std::cin >> table_in_map[i].type;
         std::cerr << table_in_map[i].type<<" ";
@@ -54,7 +55,7 @@ bool input(int& now_frame, int& now_money, table* table_in_map, int* table_num, 
         std::cerr<< robot_in_map[i].data.x <<" "<< robot_in_map[i].data.y<<std::endl;;
     }
     // 输入4个机器人的相关数据
-   char gyx[4]={};
+   char gyx[2]={};
    std::cin>>gyx;
    std::cerr<<gyx<<std::endl;
     // 最后一行输入"OK",则为true,反之则为false

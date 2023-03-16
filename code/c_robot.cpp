@@ -1,155 +1,234 @@
 
-#include"c_robot.h"
-#include<iostream>
-#include<math.h>
-#include<string.h>
-back_command* robot::route_control(map1& now_map)
+#include "c_robot.h"
+#include <iostream>
+#include <math.h>
+#include <string.h>
+int turn_toward(double bot_toward, double table_bot_toward);
+back_command *robot::route_control(map1 &now_map)
 {
-    std::cerr<<"route_control"<<std::endl;
-    const double PI = 3.14159;                     // 圆周率π的值
-    const double min_angle = 0.001;              // 机器人的朝向和机器人与目标工作台夹角的最小值
-    const double max_tan_angle=100;
-    const double max_speed = 6;                    // 机器人行驶的最大速度
-    double delta_x, delta_y;                       // 机器人与所要去的工作台的坐标变化量
-    double tan_angle, angle;                       // 计算机器人与工作台连线的角度
-    double turn_angle=0;                             // 需要旋转的角度
-    double turn_angle_positive=0;                    // 需要旋转的角度的绝对值
-    table* goto_table;
-                               // 定义地图上的工作台
-    goto_table = now_map.gettable(); 
-                  // 返回地图上的工作台
-    back_command* command_need = new back_command; // 声明需要返回的指令
-    std::cerr<<"gyx "<<std::endl;  
-    command_need->command_num = 0;                 // 指令个数初始化
-    command_need->back_command=new command[8];
+    std::cerr<<"robot:"<<data.num<<" control_flag "<<data.control_flag<<" ori"<<data.ori<<" des"<<data.des<<" type"<<data.object<<std::endl;
+    const double pai = 3.1415926;
+    table *now_table = now_map.gettable();
+    int now_table_num = *now_map.gettable_num();
+    int ori = data.ori;
+    int des = data.des;
+    if (data.control_flag <= 0)
+    {
+        command *com = new command[2];
+        back_command *back = new back_command;
+        back->command_num = 2;
+        back->back_command = com;
 
-    std::cerr<<"flag="<<data.control_flag<<std::endl;
-    if (data.table == data.ori)
-    {
-        std::cerr<<"gyx1 ";
-        strcpy(command_need->back_command[command_need->command_num].command, "buy");
-        command_need->back_command[command_need->command_num].arg1 = data.num;
-        command_need->back_command[command_need->command_num].command_tpye = 1;
-        command_need->command_num++;
-        data.control_flag = 2;
-    } // 机器人到达起点
-    else if (data.table == data.des)
-    {
-        std::cerr<<"gyx2 ";
-        strcpy(command_need->back_command[command_need->command_num].command, "sell");
-        command_need->back_command[command_need->command_num].arg1 = data.num;
-        command_need->back_command[command_need->command_num].command_tpye = 1;
-        command_need->command_num++;
-        data.control_flag = 0;
-    } // 机器人到达终点
-    if (data.control_flag == 1)
-    {
-        std::cerr<<"gyx3 ";
-        delta_x = goto_table[data.ori].x - data.x;
-        delta_y = goto_table[data.ori].y - data.y;
-        tan_angle = delta_y / delta_x;
-        // if(tan_angle>=max_tan_angle||tan_angle<=-1*max_tan_angle){
-        //     angle=PI/2;
-        //     if(delta_y<0){
-        //         angle*=(-1);
-        //     }
-        // }
-        if (delta_x >= 0)
-        {
-            angle = atan(tan_angle);
-        }
-        else if (delta_y >= 0)
-        {
-            tan_angle *= -1;
-            angle = atan(tan_angle);
-            angle = PI - angle;
-        }
-        else if (delta_y < 0)
-        {
-            tan_angle *= -1;
-            angle = atan(tan_angle);
-            angle = -1 * PI - angle;
-        }
-    } // 机器人去往起点
-    else if (data.control_flag == 2)
-    {
-        std::cerr<<"gyx4 ";
-        delta_x = goto_table[data.des].x - data.x;
-        delta_y = goto_table[data.des].y - data.y;
-        tan_angle = delta_y / delta_x;
-        if (delta_x >= 0)
-        {
-            angle = atan(tan_angle);
-        }
-        else if (delta_y >= 0)
-        {
-            tan_angle *= -1;
-            angle = atan(tan_angle);
-            angle = PI - angle;
-        }
-        else if (delta_y < 0)
-        {
-            tan_angle *= -1;
-            angle = atan(tan_angle);
-            angle = -1 * PI - angle;
-        }
-    }                                                                         // 机器人去往终点
-    turn_angle = data.toward - angle;                                         // 机器人朝向与所要转到的朝向的角度的差值
-    if(turn_angle>PI){
-        turn_angle=turn_angle-2*PI;
+        strcpy(com[0].command, "forward");
+        com[0].command_tpye = 0;
+        com[0].arg1 = data.num;
+        com[0].arg2 = 0;
+
+        strcpy(com[1].command, "rotate");
+        com[1].command_tpye = 0;
+        com[1].arg1 = data.num;
+        com[1].arg2 = 0;
+
+        return back; // 没被调度的情况
     }
-    else if(turn_angle<-1*PI){
-        turn_angle=2*PI+turn_angle;
-    }
-    turn_angle_positive = (turn_angle >= 0) ? turn_angle : (-1 * turn_angle);
-    std::cerr<<"\nangle="<<angle<<std::endl;
-    std::cerr<<"\nturn_angle="<<turn_angle<<std::endl;
-     // 计算角度差值的绝对值
-    std::cerr<<"gyx5 controlflag"<<data.control_flag<<std::endl;
-    if(data.control_flag==0){
-        strcpy(command_need->back_command[command_need->command_num].command, "rotate");
-        command_need->back_command[command_need->command_num].arg1 = data.num;
-        command_need->back_command[command_need->command_num].arg2 = 0;
-        command_need->back_command[command_need->command_num].command_tpye = 0;
-        command_need->command_num++;
-        
-        return command_need;
-    }
-    else if (turn_angle_positive <= min_angle)
-    {
-        strcpy(command_need->back_command[command_need->command_num].command, "rotate");
-        command_need->back_command[command_need->command_num].arg1 = data.num;
-        command_need->back_command[command_need->command_num].arg2 = 0;
-        command_need->back_command[command_need->command_num].command_tpye = 0;
-        command_need->command_num++;
-    } // 当差值角度小于最小角度时，角速度为0
     else
     {
-        strcpy(command_need->back_command[command_need->command_num].command, "rotate");
-        command_need->back_command[command_need->command_num].arg1 = data.num;
-        if (turn_angle > 0)
-        {
-            command_need->back_command[command_need->command_num].arg2 = PI;
-        }
+
+        double bot_toward = 0;
+        if (data.toward < 0)
+            bot_toward = 2 * pai + data.toward;
         else
+            bot_toward = data.toward; // 将机器人朝向转换[0,2pai]
+
+        if (data.control_flag == 1) // 到达ori
         {
-            command_need->back_command[command_need->command_num].arg2 = -1 * PI;
+            if (data.object !=0)
+            {
+                data.control_flag = 2;
+            }
+            double angl = 0;
+            angl = atan2(now_table[data.ori].y - data.y, now_table[data.ori].x - data.x); // 计算向量方位角
+            double ori_toward = 0;                                                        // 目的地的方向向量
+            if (angl < 0)
+                ori_toward = 2 * pai + angl; // 换算成[0,2pai]
+            else
+                ori_toward = angl;
+            if (data.ori == data.table)
+            {
+                data.ori = -11;
+                std::cerr<<"\nbuy\n";
+                data.control_flag = 2;
+                back_command *back = new back_command;
+                data.object=now_table[data.ori].type;
+                command *com = new command[3];
+                back->command_num = 3;
+                back->back_command = com; // #
+                now_table[data.ori].out_control = 0;
+                strcpy(com[0].command, "buy");
+                com[0].arg1 = data.num;
+                com[0].command_tpye = 1;
+                com[1].arg1 = data.num;
+                com[1].arg2 = 0;
+                com[1].command_tpye = 0;
+                strcpy(com[1].command, "forward");
+                com[2].arg1 = data.num;
+                com[2].arg2 = 0;
+                com[2].command_tpye = 0;
+                strcpy(com[2].command, "rotate");
+                return back;
+            }
+            else
+            {
+                int turn = turn_toward(bot_toward, ori_toward);
+                if (turn == 0)
+                {
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = 0;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+                if (turn < 0)
+                {
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = -2;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+                if (turn > 0)
+                {
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = 2;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+            }
         }
-        command_need->back_command[command_need->command_num].command_tpye = 0;
-        command_need->command_num++;
-    } // 反之，角速度设为最大
-    strcpy(command_need->back_command[command_need->command_num].command, "forward");
-    command_need->back_command[command_need->command_num].arg1 = data.num;
-    command_need->back_command[command_need->command_num].arg2 = max_speed;
-    command_need->back_command[command_need->command_num].command_tpye = 0;
-    command_need->command_num++;
-    // 机器人以最大速度前进
-     std::cerr<<"route_control"<<std::endl;
-    return command_need; // 返回指令
+        if (data.control_flag == 2) // 到达目的地
+        {
+            std::cerr<<"flag=2"<<std::endl;
+            if (data.object == 0)
+            {
+                std::cerr<<"set 1"<<std::endl;
+                data.control_flag = 1;
+            }
+            double angl = 0;
+            angl = atan2(now_table[data.des].y - data.y, now_table[data.des].x - data.x); // 计算向量方位角
+            double des_toward = 0;                                                        // 目的地的方向向量
+            if (angl < 0)
+                des_toward = 2 * pai + angl;
+            else
+                des_toward = angl;
+            // 换算成[0,2pai]
+            if (data.des == data.table) // 机器人到达终点
+            {
+                data.des = -11;
+                data.control_flag = 0;
+                back_command *back = new back_command;
+                command *com = new command[3];
+                back->command_num = 3;
+                back->back_command = com; // #
+
+                strcpy(com[0].command, "sell");
+                com[0].arg1 = data.num;
+                com[0].command_tpye = 1;
+                com[1].arg1 = data.num;
+                com[1].arg2 = 0;
+                com[1].command_tpye = 0;
+                strcpy(com[1].command, "forward");
+                com[2].arg1 = data.num;
+                com[2].arg2 = 0;
+                com[2].command_tpye = 0;
+                strcpy(com[2].command, "rotate");
+                return back;
+            }
+            else
+            {
+
+                int turn = turn_toward(bot_toward, des_toward);
+                if (turn == 0)
+                {
+
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = 0;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+                if (turn < 0)
+                {
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = -2;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+                if (turn > 0)
+                {
+                    back_command *back = new back_command;
+                    command *com = new command[2];
+                    back->back_command = com;
+                    back->command_num = 2;
+                    strcpy(com[0].command, "rotate");
+                    com[0].arg1 = data.num;
+                    com[0].arg2 = 2;
+                    com[0].command_tpye = 0;
+                    strcpy(com[1].command, "forward");
+                    com[1].arg1 = data.num;
+                    com[1].arg2 = 6;
+                    com[1].command_tpye = 0;
+                    return back;
+                }
+            }
+        }
+    }
 };
+
 bool robot::avoid_crash(robot bot[])
 {
-    std::cerr<<"avoid_crash "<<std::endl;
+    std::cerr << "avoid_crash " << std::endl;
     bool crash = false;
     double time = 0.02; // 一帧在判题器中的时间
     robot_data temp_bot[4];
@@ -182,11 +261,11 @@ bool robot::avoid_crash(robot bot[])
     return crash;
 }
 
-back_command* robot::bot_avoid_crash(robot bot[])
+back_command *robot::bot_avoid_crash(robot bot[])
 {
-    std::cerr<<"bot_avoid_crash "<<std::endl;
+    std::cerr << "bot_avoid_crash " << std::endl;
     const int pai = 3.14159;
-    back_command* back = new back_command;
+    back_command *back = new back_command;
     if (bot[data.num].data.ang_speed >= 0)
     {
         back->command_num = 2;
@@ -211,3 +290,19 @@ back_command* robot::bot_avoid_crash(robot bot[])
     }
     return back;
 }
+int turn_toward(double bot_toward, double table_bot_toward)
+{
+
+    double angl = bot_toward - table_bot_toward;
+    if (angl < 0.1 && angl > -0.1)
+        return 0;
+    else
+
+        if (angl > 0)
+        return -1;
+    else if (angl < 0)
+        return 1;
+
+    //}
+
+} // 1表示逆时针 -1表示顺时针 0 表示不用转
