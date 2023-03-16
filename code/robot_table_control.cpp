@@ -43,15 +43,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table1)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num1 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table1;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table1;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num1;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                         command_count++;
@@ -65,15 +65,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
+                            if (now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num2 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table2;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table2;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num2;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
                         command_count++;
@@ -92,14 +92,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table1)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
                         int bot_num1 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table1;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table1;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num1;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                         command_count++;
@@ -114,14 +114,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
+                            if (now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
                         int bot_num2 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table2;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table2;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num2;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
                         command_count++;
@@ -139,15 +139,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table1)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num1 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table1;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table1;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num1;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                         command_count++;
@@ -161,15 +161,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
+                            if (now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num2 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table2;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table2;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num2;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
                         command_count++;
@@ -187,15 +187,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table1)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num1 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table1;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table1;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num1;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                         command_count++;
@@ -210,14 +210,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table2)
+                            if (now_bot[i2].data.des == table2)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
                         int bot_num2 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table2;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table2;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num2;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num2], i, table2);
                         command_count++;
@@ -231,15 +231,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table3)
+                            if (now_bot[i2].data.des == table3)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num3 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table3;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table3;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num3;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num3], i, table3);
                         command_count++;
@@ -257,15 +257,15 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                            if (now_bot[i2].data.ori == table1)
                                 flag = 1; // 判断该任务是否已被分配
                         }
                         if (flag == 1)
                             continue;
 
                         int bot_num1 = find_near_bot(table_now[i], now_bot);
-                        now_command[command_count].des = table1;
-                        now_command[command_count].ori = i;
+                        now_command[command_count].ori = table1;
+                        now_command[command_count].des = i;
                         now_command[command_count].robot_num = bot_num1;
                         now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                         command_count++;
@@ -280,14 +280,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table1;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table1;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table1);
                     command_count++;
@@ -298,14 +298,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table2;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table2;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table2);
                     command_count++;
@@ -316,14 +316,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table3;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table3;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table3);
                     command_count++;
@@ -334,14 +334,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table4;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table4;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table4);
                     command_count++;
@@ -352,14 +352,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table5;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table5;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table5);
                     command_count++;
@@ -370,14 +370,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table6;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table6;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table6);
                     command_count++;
@@ -388,14 +388,14 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table_num_now && now_bot[i2].data.des == table1)
+                        if (now_bot[i2].data.ori == table1)
                             flag = 1; // 判断该任务是否已被分配
                     }
                     if (flag == 1)
                         continue;
                     int bot_num1 = find_near_bot(table_now[i], now_bot);
-                    now_command[command_count].des = table7;
-                    now_command[command_count].ori = i;
+                    now_command[command_count].ori = table7;
+                    now_command[command_count].des = i;
                     now_command[command_count].robot_num = bot_num1;
                     now_command[command_count].hash = value_hash(now_map, now_bot[bot_num1], i, table7);
                     command_count++;
@@ -414,16 +414,18 @@ bool robot_table_control(map &now_map, robot now_bot[])
         {
             if (now_command[i].robot_num > now)
             {
-                
+
+                if (table_now[now_command[i].ori].out_control == 1)
+                    continue;
+                if (now_bot[now_command[i].robot_num].data.control_flag > 0)
+                    continue;
                 now = now_command[i].robot_num;
                 now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
                 now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
                 now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
-                table_now[now_command[i].des].out_control=1;
+                table_now[now_command[i].des].out_control = 1;                   // 工作台的输出切换为已接受调度
                 std::cerr << "robot_control " << now << " " << now_command[i].ori << " " << now_command[i].des << std::endl;
             }
-            if (now_command[i].robot_num == now)
-                continue;
         }
         std::cerr << "robot_table_control_over" << std::endl;
         delete[] now_command;
@@ -432,8 +434,8 @@ bool robot_table_control(map &now_map, robot now_bot[])
 }
 inline int find_near_bot(table &this_table, robot bot[])
 {
-    int num = 0;
-    double des = 0;
+    int num = -1;
+    double des = 10000;
     for (int i = 0; i < 4; i++)
     {
 
@@ -442,7 +444,7 @@ inline int find_near_bot(table &this_table, robot bot[])
         else
         {
             double now_des = pow(this_table.x - bot[i].data.x, 2) + pow(this_table.y - bot[i].data.y, 2); // 计算距离
-            if (now_des >= des)
+            if (now_des < des)
             {
                 num = i;
                 des = now_des;
@@ -454,8 +456,8 @@ inline int find_near_bot(table &this_table, robot bot[])
 
 inline int find_near_table(table *tab, int table_num, int now_table, int object_type)
 {
-    double num = -1;
-    double des = 0;
+    int num = -1;
+    double des = 50000;
     for (int i = 0; i < table_num; i++)
     {
         if (i == now_table) // 判断是否是当前工作台
@@ -467,10 +469,13 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
         if (tab[i].outstats == 0) // 判断输出格所否有产物
             continue;
         double now_des = pow(tab[now_table].x - tab[i].x, 2) + pow(tab[now_table].y - tab[i].y, 2); // 计算距离
-        if (now_des >= des)
+        if (now_des <= des)
+        {
             num = i;
+            des = now_des;
+        }
     }
-    std::cerr << "now_table " << now_table << "now_table_type=" << tab[now_table].type << " table_found " << num << std::endl;
+    std::cerr << "now_table " << now_table << "now_table_type=" << tab[now_table].type << " table_found " << num << "goto_table_type " << tab[num].type << std::endl;
     return num; // 返回最近的有所请求物品的工作台的编号
 }
 bool sort1(bot_control_command a, bot_control_command b)
