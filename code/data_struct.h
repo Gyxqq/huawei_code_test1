@@ -83,6 +83,7 @@ struct robot_data
     int  control_flag; // 标志位,0表示机器人处于空闲状态,1表示机器人正在前往起点，2表示正在前往终点
     int ori;           // 当前调度起点
     int des;           // 当前调度终点
+    int get; //储存要获取的物品
 };
 #endif
 

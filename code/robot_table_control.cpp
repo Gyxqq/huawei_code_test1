@@ -21,14 +21,20 @@ bool robot_table_control(map &now_map, robot now_bot[])
         if (now_bot[i].data.control_flag == 0 && now_bot[i].data.object != 0)
         {
             int flag_1 = refind_des(table_now, now_bot[i].data.object, table_num_now);
+
             if (flag_1 == -1)
-                continue;
+                now_bot[i].data.control_flag = -1;
+
             else
             {
                 std::cerr << "bot_reset " << i << " table num " << flag_1 << " table_type " << table_now[flag_1].type << std::endl;
                 now_bot[i].data.des = flag_1;
                 now_bot[i].data.control_flag = 2; // 机器人重新调度
             }
+        }
+        if (table_now[now_bot[i].data.des].instats[now_bot[i].data.object] == 1 && now_bot[i].data.object != 0&&table_now[now_bot[i].data.des].rest<=0)
+        {
+            now_bot[i].data.control_flag = -1;
         }
     }
     if (now_bot[0].data.control_flag > 0 && now_bot[1].data.control_flag > 0 && now_bot[2].data.control_flag > 0 && now_bot[3].data.control_flag > 0)
@@ -48,8 +54,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
             std::cerr << "& ";
             if (table_now[i].type == 1 || table_now[i].type == 2 || table_now[i].type == 3)
                 continue; // 判断工作台是不是123号仅生产的工作台
-            if (table_now[i].rest == 0)
-                continue; // 判断工作台所否处于阻塞状态
+            if (table_now[i].rest >= 0)
+                continue;
+            if (table_now[i].outstats == 1)
+                continue;
+            // 判断工作台所否处于阻塞状态
             if (table_now[i].type == 4)
             {
                 if (!table_now[i].instats[1]) // 判断相应原料槽有无原料
@@ -61,8 +70,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table1)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 1)
+                                    flag = 1;
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -83,8 +95,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.des == table2)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table2 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 2)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -110,8 +125,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table1)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 1)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -132,8 +150,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.des == table2)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table2 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 3)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -157,8 +178,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table1)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 2)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -179,8 +203,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.des == table2)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table2 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 3)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -205,8 +232,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table1)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 4)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -228,8 +258,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.des == table2)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table2 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 5)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -249,8 +282,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.des == table3)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table3 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 6)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -275,8 +311,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                         int flag = 0;
                         for (int i2 = 0; i2 < 4; i2++)
                         {
-                            if (now_bot[i2].data.ori == table1)
-                                flag = 1; // 判断该任务是否已被分配
+                            if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                            {
+                                if (now_bot[i2].data.get == 7)
+                                    flag = 1; // 判断该任务是否已被分配
+                            }
                         }
                         if (flag == 1)
                             continue;
@@ -298,8 +337,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table1 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 1)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -316,8 +358,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table2 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 2)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -334,8 +379,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table3 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 3)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -352,8 +400,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table4 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 4)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -370,8 +421,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table5 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 5)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -388,8 +442,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table6 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 6)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -406,8 +463,11 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     int flag = 0;
                     for (int i2 = 0; i2 < 4; i2++)
                     {
-                        if (now_bot[i2].data.ori == table1)
-                            flag = 1; // 判断该任务是否已被分配
+                        if (now_bot[i2].data.des == table7 && now_bot[i2].data.ori == i && now_bot[i2].data.control_flag != 0)
+                        {
+                            if (now_bot[i2].data.get == 7)
+                                flag = 1; // 判断该任务是否已被分配
+                        }
                     }
                     if (flag == 1)
                         continue;
@@ -432,7 +492,17 @@ bool robot_table_control(map &now_map, robot now_bot[])
         {
             if (now_command[i].robot_num > now)
             {
-
+                int flag = 0;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    int c = now_command[i].robot_num;
+                    if (now_bot[i2].data.num == now_command[i].robot_num)
+                        continue;
+                    if (now_bot[c].data.des == now_bot[i2].data.des && now_bot[c].data.ori == now_bot[i2].data.ori && now_bot[c].data.get == now_bot[i2].data.get && now_bot[i2].data.control_flag != 0)
+                        flag = 1;
+                }
+                if (flag == 1)
+                    continue;
                 if (table_now[now_command[i].ori].out_control == 1)
                     continue;
                 if (now_bot[now_command[i].robot_num].data.control_flag > 0)
@@ -441,8 +511,9 @@ bool robot_table_control(map &now_map, robot now_bot[])
                 now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
                 now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
                 now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
-                if (table_now[now_command[i].ori].type != 1 && table_now[now_command[i].ori].type != 2 && table_now[now_command[i].ori].type != 3)
-                    table_now[now_command[i].ori].out_control = 1; // 工作台的输出切换为已接受调度
+                                                                                 // if (table_now[now_command[i].ori].type != 1 && table_now[now_command[i].ori].type != 2 && table_now[now_command[i].ori].type != 3)
+                //   table_now[now_command[i].ori].out_control = 1; // 工作台的输出切换为已接受调度
+                now_bot[now_command[i].robot_num].data.get = table_now[now_command[i].ori].type; // 录入要获取的物品
                 std::cerr << "robot_control " << now << " " << now_command[i].ori << " " << now_command[i].des << std::endl;
             }
         }
