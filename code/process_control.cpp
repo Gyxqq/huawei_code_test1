@@ -2,7 +2,7 @@
 #include "c_map.h"
 #include "function.h"
 #include <string.h>
-#include <Windows.h>
+//#include <Windows.h>
 bool process_control(map &now_map, robot now_bot[])
 {
   while (1)

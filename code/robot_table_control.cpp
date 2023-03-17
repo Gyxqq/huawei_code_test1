@@ -2,9 +2,12 @@
 #include "function.h"
 #include <algorithm>
 #include <math.h>
+#include <string.h>
 bool sort2(bot_control_command a, bot_control_command b);
 bool sort1(bot_control_command a, bot_control_command b);
 inline int find_near_bot(table &this_table, robot bot[]);
+
+int refind_des(table *tab_now, int obj_type, int table_num);
 inline int find_near_table(table *tab, int table_num, int now_table, int object_type);
 bool robot_table_control(map &now_map, robot now_bot[])
 {
@@ -12,7 +15,22 @@ bool robot_table_control(map &now_map, robot now_bot[])
     table *table_now = now_map.gettable();
     int table_num_now = *now_map.gettable_num();
     std::cerr << "table_num_now" << table_num_now << std::endl;
-    bot_control_command *final_bot_control = new bot_control_command[4]; // 存放机器人调度指令
+    bot_control_command *final_bot_control = new bot_control_command[4]; // 存放机器人调度指令n
+    for (int i = 0; i < 4; i++)
+    {
+        if (now_bot[i].data.control_flag == 0 && now_bot[i].data.object != 0)
+        {
+            int flag_1 = refind_des(table_now, now_bot[i].data.object, table_num_now);
+            if (flag_1 == -1)
+                continue;
+            else
+            {
+                std::cerr << "bot_reset " << i << " table num " << flag_1 << " table_type " << table_now[flag_1].type << std::endl;
+                now_bot[i].data.des = flag_1;
+                now_bot[i].data.control_flag = 2; // 机器人重新调度
+            }
+        }
+    }
     if (now_bot[0].data.control_flag > 0 && now_bot[1].data.control_flag > 0 && now_bot[2].data.control_flag > 0 && now_bot[3].data.control_flag > 0)
     {
         std::cerr << "gyx1 ";
@@ -423,7 +441,8 @@ bool robot_table_control(map &now_map, robot now_bot[])
                 now_bot[now_command[i].robot_num].data.ori = now_command[i].ori; // 设定起始地
                 now_bot[now_command[i].robot_num].data.des = now_command[i].des; // 设定目的地
                 now_bot[now_command[i].robot_num].data.control_flag = 1;         // 将机器人切换为正在接受调度的状态
-                table_now[now_command[i].des].out_control = 1;                   // 工作台的输出切换为已接受调度
+                if (table_now[now_command[i].ori].type != 1 && table_now[now_command[i].ori].type != 2 && table_now[now_command[i].ori].type != 3)
+                    table_now[now_command[i].ori].out_control = 1; // 工作台的输出切换为已接受调度
                 std::cerr << "robot_control " << now << " " << now_command[i].ori << " " << now_command[i].des << std::endl;
             }
         }
@@ -432,6 +451,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
         return 1;
     }
 }
+
 inline int find_near_bot(table &this_table, robot bot[])
 {
     int num = -1;
@@ -460,6 +480,7 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
     double des = 50000;
     for (int i = 0; i < table_num; i++)
     {
+
         if (i == now_table) // 判断是否是当前工作台
             continue;
         if (tab[i].type != object_type) // 判断产物的类型是否和请求类型相同
@@ -478,6 +499,7 @@ inline int find_near_table(table *tab, int table_num, int now_table, int object_
     std::cerr << "now_table " << now_table << "now_table_type=" << tab[now_table].type << " table_found " << num << "goto_table_type " << tab[num].type << std::endl;
     return num; // 返回最近的有所请求物品的工作台的编号
 }
+
 bool sort1(bot_control_command a, bot_control_command b)
 {
     return a.robot_num < b.robot_num;
@@ -485,4 +507,95 @@ bool sort1(bot_control_command a, bot_control_command b)
 bool sort2(bot_control_command a, bot_control_command b)
 {
     return a.robot_num <= b.robot_num && a.hash > b.hash; // 排序
+}
+// bool sort3(bot_control_command a, bot_control_command b,table tab[]){
+//     return a.robot_num <= b.robot_num &&tab[a.des].type>=tab[b.des].type;
+// }
+bool sort_1(table a, table b)
+{
+    return a.type > b.type;
+}
+
+int refind_des(table *tab_now, int obj_type, int table_num)
+{
+
+    int i2 = -1;
+    table *tab = new table[table_num];
+    memcpy(tab, tab_now, table_num * sizeof(table));
+    std::sort(tab, tab + table_num, sort_1);
+    for (i2 = 0; i2 < table_num; i2++)
+    {
+
+        if (tab[i2].type == 9)
+        {
+            if (tab[i2].instats[obj_type] == 0)
+            {
+                break;
+            }
+        }
+        if (tab[i2].type == 8)
+        {
+            if (obj_type == 7 && tab[i2].instats[7] == 0)
+            {
+                break;
+            }
+        }
+        if (tab[i2].type == 7)
+        {
+
+            if (obj_type == 6 && tab[i2].instats[6] == 0)
+            {
+                break;
+            }
+            if (obj_type == 5 && tab[i2].instats[5] == 0)
+            {
+                break;
+            }
+            if (obj_type == 4 && tab[i2].instats[4] == 0)
+            {
+                break;
+            }
+        }
+        if (tab[i2].type == 6)
+        {
+            if (obj_type == 3 && tab[i2].instats[3] == 0)
+            {
+                break;
+            }
+            if (obj_type == 2 && tab[i2].instats[2] == 0)
+            {
+                break;
+            }
+        }
+        if (tab[i2].type == 5)
+        {
+            if (obj_type == 3 && tab[i2].instats[3] == 0)
+            {
+                break;
+            }
+            if (obj_type == 1 && tab[i2].instats[1] == 0)
+            {
+                break;
+            }
+        }
+        if (tab[i2].type == 4)
+        {
+            if (obj_type == 2 && tab[i2].instats[2] == 0)
+            {
+                break;
+            }
+            if (obj_type == 1 && tab[i2].instats[1] == 0)
+            {
+                break;
+            }
+        }
+        if (i2 == table_num - 1)
+        {
+            i2 = -1;
+            break;
+        }
+    }
+    i2 = tab[i2].num;
+    delete[] tab;
+    return i2;
 }

@@ -14,6 +14,9 @@ double value_hash(map now_map,robot now_bot,int ori,int des)
     temp_frame=(distance1+distance2)/6*50;
     double timerate=f(temp_frame,9000,0.8);
     val=money[temp_table[ori].type]*timerate/temp_frame;
+   
+    if(temp_table[ori].type>3)
+    val+=val*temp_table[ori].type;
     return val;
 }
 

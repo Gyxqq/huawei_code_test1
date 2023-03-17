@@ -3,18 +3,20 @@
 #include <iostream>
 #include <math.h>
 #include <string.h>
-int turn_toward(double bot_toward, double table_bot_toward);
+double turn_toward(double bot_toward, double table_bot_toward);
 back_command *robot::route_control(map1 &now_map)
 {
-    std::cerr<<"robot:"<<data.num<<" control_flag "<<data.control_flag<<" ori"<<data.ori<<" des"<<data.des<<" type"<<data.object<<std::endl;
+    std::cerr << "robot:" << data.num << " control_flag " << data.control_flag << " ori" << data.ori << " des" << data.des << " type" << data.object << std::endl;
     const double pai = 3.1415926;
     table *now_table = now_map.gettable();
     int now_table_num = *now_map.gettable_num();
     int ori = data.ori;
     int des = data.des;
-    double speed=6;
-    if(data.x <2||data.x>48||data.y<2||data.y>48)speed=2;
-    
+    double speed = 6;
+    double turn_speed = 1;
+    if (data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49)
+        speed = 2;
+
     if (data.control_flag <= 0)
     {
         command *com = new command[2];
@@ -45,7 +47,17 @@ back_command *robot::route_control(map1 &now_map)
 
         if (data.control_flag == 1) // 到达ori
         {
-            
+            if (data.object > 0)
+            {
+                data.control_flag = 0;
+            }
+            if(data.ori<0&&data.des<0){
+                data.control_flag=0;
+            }
+            if(data.ori<0&&data.des>=0){
+
+                    data.control_flag=2;
+            }
             double angl = 0;
             angl = atan2(now_table[data.ori].y - data.y, now_table[data.ori].x - data.x); // 计算向量方位角
             double ori_toward = 0;                                                        // 目的地的方向向量
@@ -56,11 +68,11 @@ back_command *robot::route_control(map1 &now_map)
             if (data.ori == data.table)
             {
                 data.ori = -11;
-                std::cerr<<"\nbuy\nset_2\n";
+                std::cerr << "\nbuy\nset_2\n";
                 this->data.control_flag = 2;
-                std::cerr<<"robot_num "<<data.num<<" back_flag "<<data.control_flag<<std::endl;
+                std::cerr << "robot_num " << data.num << " back_flag " << data.control_flag << std::endl;
                 back_command *back = new back_command;
-                data.object=now_table[data.ori].type;
+                data.object = now_table[data.ori].type;
                 command *com = new command[3];
                 back->command_num = 3;
                 back->back_command = com; // #
@@ -76,13 +88,12 @@ back_command *robot::route_control(map1 &now_map)
                 com[2].arg2 = speed;
                 com[2].command_tpye = 0;
                 strcpy(com[2].command, "rotate");
-                std::cerr<<"robot_num "<<data.num<<" back_flag "<<data.control_flag<<std::endl;
+                std::cerr << "robot_num " << data.num << " back_flag " << data.control_flag << std::endl;
                 return back;
-                
             }
             else
             {
-                int turn = turn_toward(bot_toward, ori_toward);
+                double turn = turn_toward(bot_toward, ori_toward);
                 if (turn == 0)
                 {
                     back_command *back = new back_command;
@@ -101,13 +112,24 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
+                    if (abs(turn) > 0.5)
+                    {
+                        speed = 1; // 钝角转弯减速
+                        turn_speed = 3.14;
+                    }
+                    if (abs(turn) < 0.5)
+                    {
+                       speed = 5; // 钝角转弯减速
+                   turn_speed = abs(turn)+0.2;
+                    }
+                    
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
                     back->command_num = 2;
                     strcpy(com[0].command, "rotate");
                     com[0].arg1 = data.num;
-                    com[0].arg2 = -2;
+                    com[0].arg2 = -turn_speed;
                     com[0].command_tpye = 0;
                     strcpy(com[1].command, "forward");
                     com[1].arg1 = data.num;
@@ -117,13 +139,23 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
+                    if (abs(turn) > 0.5)
+                    {
+                         speed = 1; // 钝角转弯减速
+                        turn_speed = 3.14;
+                    }
+                    if (abs(turn) < 0.5)
+                    {
+                        speed = 5; // 钝角转弯减速 
+                    turn_speed = abs(turn)+0.2;
+                    }
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
                     back->command_num = 2;
                     strcpy(com[0].command, "rotate");
                     com[0].arg1 = data.num;
-                    com[0].arg2 = 2;
+                    com[0].arg2 = turn_speed;
                     com[0].command_tpye = 0;
                     strcpy(com[1].command, "forward");
                     com[1].arg1 = data.num;
@@ -135,8 +167,11 @@ back_command *robot::route_control(map1 &now_map)
         }
         if (data.control_flag == 2) // 到达目的地
         {
-            std::cerr<<"flag=2"<<std::endl;
-           
+            std::cerr << "flag=2" << std::endl;
+            if (data.object == 0)
+            {
+                data.control_flag = 1;
+            }
             double angl = 0;
             angl = atan2(now_table[data.des].y - data.y, now_table[data.des].x - data.x); // 计算向量方位角
             double des_toward = 0;                                                        // 目的地的方向向量
@@ -158,11 +193,11 @@ back_command *robot::route_control(map1 &now_map)
                 com[0].arg1 = data.num;
                 com[0].command_tpye = 1;
                 com[1].arg1 = data.num;
-                com[1].arg2 = 0;
+                com[1].arg2 = 6;
                 com[1].command_tpye = 0;
                 strcpy(com[1].command, "forward");
                 com[2].arg1 = data.num;
-                com[2].arg2 = 0;
+                com[2].arg2 = 2;
                 com[2].command_tpye = 0;
                 strcpy(com[2].command, "rotate");
                 return back;
@@ -170,7 +205,7 @@ back_command *robot::route_control(map1 &now_map)
             else
             {
 
-                int turn = turn_toward(bot_toward, des_toward);
+                double turn = turn_toward(bot_toward, des_toward);
                 if (turn == 0)
                 {
 
@@ -190,13 +225,23 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
+                    if (abs(turn) > 0.5)
+                    {
+                            speed = 1; // 钝角转弯减速
+                        turn_speed = 3.14;
+                    }
+                    if (abs(turn) < 0.5)
+                    {
+                        speed = 5; // 钝角转弯减速
+                      turn_speed = abs(turn)+0.2;
+                    }
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
                     back->command_num = 2;
                     strcpy(com[0].command, "rotate");
                     com[0].arg1 = data.num;
-                    com[0].arg2 = -2;
+                    com[0].arg2 = -turn_speed;
                     com[0].command_tpye = 0;
                     strcpy(com[1].command, "forward");
                     com[1].arg1 = data.num;
@@ -206,13 +251,24 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
+                    if (abs(turn) > 0.5)
+                    {
+                          speed = 1; // 钝角转弯减速
+                        turn_speed = 3.14;
+                    }
+                    if (abs(turn) < 0.5)
+                    {
+                        speed = 5; // 钝角转弯减速
+                      turn_speed = abs(turn)+0.2;
+                    }
+
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
                     back->command_num = 2;
                     strcpy(com[0].command, "rotate");
                     com[0].arg1 = data.num;
-                    com[0].arg2 = 2;
+                    com[0].arg2 = turn_speed;
                     com[0].command_tpye = 0;
                     strcpy(com[1].command, "forward");
                     com[1].arg1 = data.num;
@@ -289,18 +345,16 @@ back_command *robot::bot_avoid_crash(robot bot[])
     }
     return back;
 }
-int turn_toward(double bot_toward, double table_bot_toward)
+double turn_toward(double bot_toward, double table_bot_toward)
 {
 
     double angl = bot_toward - table_bot_toward;
-    if (angl < 0.1 && angl > -0.1)
+    if (angl < 0.2 && angl > -0.2)
         return 0;
+    if(angl>2.5||angl<-2.5)
+        return -3;
     else
-
-        if (angl > 0)
-        return 1;
-    else if (angl < 0)
-        return 1;
+        return -angl;
 
     //}
 

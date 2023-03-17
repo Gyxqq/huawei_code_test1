@@ -19,7 +19,10 @@ struct table
     bool out_control;
     // 产品是否已被调度 1表示已被调度
 
-    bool instats[8]; // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
+    bool instats[8];
+     // 储存原料格状态 储存七种原料填充状态，从数组1号元素开始 0表示无,1表示有
+
+     bool bot_inttats[8];//输入调度情况
 
     // 储存工作台信息
 };
@@ -62,7 +65,7 @@ struct bot_control_command
     int robot_num; // 机器人编号
     int ori;       // 起点
     int des;       // 终点
-    int hash;      // 方案效率的哈希值
+    double hash;      // 方案效率的哈希值
 };
 
 struct robot_data
