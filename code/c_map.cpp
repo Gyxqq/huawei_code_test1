@@ -17,6 +17,7 @@ bool map::mapinit(robot bot[])
                 bot[count_bot].data.control_flag = 0;
                 bot[count_bot].data.num = count_bot;
                 bot[count_bot].data.object = 0;
+                 bot[count_bot].data.get = 0;
                 count_bot++;
             }
             if (map[y][x] <= '9' && map[y][x] >= '0')
@@ -38,11 +39,47 @@ bool map::mapinit(robot bot[])
             {
                 table_in_map[count_table].type = map[y][x] - '0';
                 table_in_map[count_table].num = count_table;
-                table_in_map[count_table].x = 0.25+0.5*x;
-                table_in_map[count_table].y = 0.25+0.5*y;
+                table_in_map[count_table].x = 0.25 + 0.5 * x;
+                table_in_map[count_table].y = 0.25 + 0.5 * y;
                 table_in_map[count_table].outstats = 0;
                 table_in_map[count_table].out_control = 0;
+                for (int i2 = 0; i2 < 8; i2++)
+                    table_in_map[count_table].bot_inttats[i2] = 0;
+                if (table_in_map[count_table].type == 9)
+                {
+                    for (int i2 = 0; i2 < 8; i2++)
+                        table_in_map[count_table].bot_inttats[i2] = 1;
+                }
+                if (table_in_map[count_table].type == 8)
+                {
 
+                    table_in_map[count_table].bot_inttats[7] = 1;
+                }
+                if (table_in_map[count_table].type == 7)
+                {
+
+                    table_in_map[count_table].bot_inttats[6] = 1;
+                    table_in_map[count_table].bot_inttats[5] = 1;
+                    table_in_map[count_table].bot_inttats[4] = 1;
+                }
+                if (table_in_map[count_table].type == 6)
+                {
+
+                    table_in_map[count_table].bot_inttats[3] = 1;
+                    table_in_map[count_table].bot_inttats[2] = 1;
+                }
+                if (table_in_map[count_table].type == 5)
+                {
+
+                    table_in_map[count_table].bot_inttats[3] = 1;
+                    table_in_map[count_table].bot_inttats[1] = 1;
+                }
+                if (table_in_map[count_table].type == 4)
+                {
+
+                    table_in_map[count_table].bot_inttats[2] = 1;
+                    table_in_map[count_table].bot_inttats[1] = 1;
+                }
                 for (int i1 = 0; i1 < 8; i1++)
                 {
                     table_in_map[count_table].instats[i1] = 0;

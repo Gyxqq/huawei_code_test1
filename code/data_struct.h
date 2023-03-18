@@ -66,6 +66,7 @@ struct bot_control_command
     int ori;       // 起点
     int des;       // 终点
     double hash;      // 方案效率的哈希值
+    int type; //物品种类
 };
 
 struct robot_data
@@ -83,6 +84,7 @@ struct robot_data
     int  control_flag; // 标志位,0表示机器人处于空闲状态,1表示机器人正在前往起点，2表示正在前往终点
     int ori;           // 当前调度起点
     int des;           // 当前调度终点
+    int get;
 };
 #endif
 
