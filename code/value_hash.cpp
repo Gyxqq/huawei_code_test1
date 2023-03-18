@@ -2,16 +2,16 @@
 #include <math.h>
 #include "c_map.h"
 const double delayframe = 300; // 转弯减速等产生的时间差，用于调整
-const double _7to89 = 1000000;
-const double _6to7 = 100;
+const double _7to89 = 10000;
+const double _6to7 = 90;
 const double _5to7 = 90;
-const double _4to7 = 80;
-const double _6to9 = 70;
-const double _5to9 = 60;
-const double _4to9 = 50;
+const double _4to7 = 90;
+const double _6to9 = 40;
+const double _5to9 = 40;
+const double _4to9 = 40;
 const double _23to6 = 40;
-const double _13to5 = 30;
-const double _12to4 = 20;
+const double _13to5 = 40;
+const double _12to4 = 40;
 const double _123to9 = 10;
 const double tableneed = 120;
 double f(double x, double maxX, double minRate); // 官方文档中的f函数，用以计算时间系数和碰撞系数
@@ -33,7 +33,7 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     temp_frame2 = (distance1 + distance2) / 6 * 50;
     double timerate = f(temp_frame1, 9000, 0.8);
     double profit = (money_out[temp_table[ori].type] * timerate) - money_in[temp_table[ori].type];
-    val = profit / (distance1 + distance2);
+    val = profit / ((distance1 + distance2)*4);
     std::cerr<<"2 "<<oritype<<std::endl;
     if(oritype==7)val=profit;
     std::cerr<<"3 "<<oritype<<std::endl;
@@ -63,7 +63,7 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
         std::cerr<<"4 "<<oritype<<std::endl;
     for (int i = 0; i < tablenum; i++)
     {
-        if (temp_table[i].type == 7 && temp_table[i].instats[oritype] == 0)
+        if (temp_table[i].type == 7 && temp_table[i].instats[destype] == 0)
             val = val * tableneed;
     }
     std::cerr<<"5 "<<oritype<<std::endl;

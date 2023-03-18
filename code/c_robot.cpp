@@ -140,7 +140,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (bot_table_des(*this, now_table) <= 9)
+                    if (bot_table_des(*this, now_table) <= 1)
                         speed = 3;
                     if (abs(turn) > min_angl)
                     {
@@ -164,7 +164,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (bot_table_des(*this, now_table) <= 9)
+                    if (bot_table_des(*this, now_table) <= 1)
                         speed = 3;
                     if (abs(turn) > min_angl)
                     {
@@ -246,7 +246,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (bot_table_des(*this, now_table) <= 9)
+                    if (bot_table_des(*this, now_table) <= 1)
                         speed = 3;
                     if (abs(turn) > min_angl)
                     {
@@ -270,7 +270,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (bot_table_des(*this, now_table) <= 9)
+                    if (bot_table_des(*this, now_table) <= 1)
                         speed = 3;
                     if (abs(turn) > min_angl)
                     {
