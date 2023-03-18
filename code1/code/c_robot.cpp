@@ -231,7 +231,7 @@ bool robot::avoid_crash(robot bot[])
     bool crash = false;
     double time = 0.02; // 一帧在判题器中的时间
     robot_data temp_bot[4];
-    for (int frame = 0; frame < 5; frame++)
+    for (int frame = 0; frame < 10; frame++)
     {
         for (int i = 0; i < 4; i++) // 计算所有机器人下一帧大概的位置
         {
@@ -271,10 +271,10 @@ back_command *robot::bot_avoid_crash(robot bot[])
         back->back_command[0].command_tpye = 0;
         strcpy(back->back_command[0].command, "forward");
         back->back_command[0].arg1 = data.num;
-        back->back_command[0].arg2 = 6;
+        back->back_command[0].arg2 = 0;
         strcpy(back->back_command[1].command, "rotate");
         back->back_command[1].arg1 = data.num;
-        back->back_command[1].arg2 = -pai;
+        back->back_command[1].arg2 = pai;
     }
     else
     {
@@ -282,10 +282,10 @@ back_command *robot::bot_avoid_crash(robot bot[])
         back->back_command[0].command_tpye = 0;
         strcpy(back->back_command[0].command, "forward");
         back->back_command[0].arg1 = data.num;
-        back->back_command[0].arg2 = 6;
+        back->back_command[0].arg2 = 0;
         strcpy(back->back_command[1].command, "rotate");
         back->back_command[1].arg1 = data.num;
-        back->back_command[1].arg2 = pai;
+        back->back_command[1].arg2 = -pai;
     }
     return back;
 }

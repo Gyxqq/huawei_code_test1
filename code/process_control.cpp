@@ -22,7 +22,7 @@ bool process_control(map &now_map, robot now_bot[])
     {
       back_command *com;
       std::cerr << "gyx1 ";
-      if (0)//now_bot[i].avoid_crash(now_bot)
+      if (now_bot[i].avoid_crash(now_bot))
       {
         std::cerr << "gyx2 ";
         com = now_bot[i].bot_avoid_crash(now_bot);

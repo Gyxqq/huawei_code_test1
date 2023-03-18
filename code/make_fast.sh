@@ -24,4 +24,4 @@ g++ main.o map.o map1.o robot.o input.o output_process.o output.o process_contro
 rm *.o
 rm outlog.txt
 chmod 777 main
-./Robot -d -m 1.txt "main">>outlog.txt
+

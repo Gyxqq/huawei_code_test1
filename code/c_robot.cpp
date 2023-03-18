@@ -17,7 +17,32 @@ back_command *robot::route_control(map1 &now_map)
     if (data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49)
         speed = 2;
 
-    if (data.control_flag <= 0)
+    if (data.control_flag == -1)
+    {
+        command *com = new command[3];
+        back_command *back = new back_command;
+        back->command_num = 3;
+        back->back_command = com;
+
+        strcpy(com[0].command, "forward");
+        com[0].command_tpye = 0;
+        com[0].arg1 = data.num;
+        com[0].arg2 = 0;
+
+        strcpy(com[1].command, "rotate");
+        com[1].command_tpye = 0;
+        com[1].arg1 = data.num;
+        com[1].arg2 = 0;
+
+        strcpy(com[2].command, "destroy");
+        com[1].command_tpye = 1;
+        com[1].arg1 = data.num;
+        com[1].arg2 = 0;
+        data.control_flag = 0;
+
+        return back; // 没被调度的情况
+    }
+    if (data.control_flag == 0)
     {
         command *com = new command[2];
         back_command *back = new back_command;
@@ -137,7 +162,7 @@ back_command *robot::route_control(map1 &now_map)
                 {
                     if (abs(turn) > 0.5)
                     {
-                         speed = 1; // 钝角转弯减速
+                        speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
                    
@@ -216,7 +241,7 @@ back_command *robot::route_control(map1 &now_map)
                 {
                     if (abs(turn) > 0.5)
                     {
-                            speed = 1; // 钝角转弯减速
+                        speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
                    
@@ -238,7 +263,7 @@ back_command *robot::route_control(map1 &now_map)
                 {
                     if (abs(turn) > 0.5)
                     {
-                          speed = 1; // 钝角转弯减速
+                        speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
                     
