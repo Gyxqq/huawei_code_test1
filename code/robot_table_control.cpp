@@ -3,8 +3,7 @@
 #include <algorithm>
 #include <math.h>
 #include <string.h>
-
-bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
+ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
 {
 
     table *now_table = now_map.gettable();
