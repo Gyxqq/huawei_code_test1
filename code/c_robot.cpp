@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 double turn_toward(double bot_toward, double table_bot_toward);
+double bot_table_des(robot bot, table *now_table);
 back_command *robot::route_control(map1 &now_map)
 {
     std::cerr << "robot:" << data.num << " control_flag " << data.control_flag << " ori" << data.ori << " des" << data.des << " type" << data.object << std::endl;
@@ -13,8 +14,10 @@ back_command *robot::route_control(map1 &now_map)
     int ori = data.ori;
     int des = data.des;
     double speed = 6;
-    double turn_speed = 1;
-    if ((data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49)&&data.toward>0)
+    double turn_speed = 1.5;
+    double min_angl = 1.2;
+
+    if ((data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49) && data.toward > 0.1 && data.toward < 3.13)
         speed = 2;
 
     if (data.control_flag == -1)
@@ -92,7 +95,7 @@ back_command *robot::route_control(map1 &now_map)
                 ori_toward = angl;
             if (data.ori == data.table)
             {
-               
+
                 std::cerr << "\nbuy\nset_2\n";
                 data.control_flag = 2;
                 std::cerr << "robot_num " << data.num << " back_flag " << data.control_flag << std::endl;
@@ -137,13 +140,14 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (abs(turn) > 0.8)
+                    if (bot_table_des(*this, now_table) <= 9)
+                        speed = 3;
+                    if (abs(turn) > min_angl)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
-                  
-                    
+
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
@@ -160,12 +164,14 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (abs(turn) > 0.8)
+                    if (bot_table_des(*this, now_table) <= 9)
+                        speed = 3;
+                    if (abs(turn) > min_angl)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
-                   
+
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
@@ -185,7 +191,8 @@ back_command *robot::route_control(map1 &now_map)
         if (data.control_flag == 2) // 到达目的地
         {
             std::cerr << "flag=2" << std::endl;
-           if(data.object<=0)data.control_flag=0;
+            if (data.object <= 0)
+                data.control_flag = 0;
             double angl = 0;
             angl = atan2(now_table[data.des].y - data.y, now_table[data.des].x - data.x); // 计算向量方位角
             double des_toward = 0;                                                        // 目的地的方向向量
@@ -196,7 +203,7 @@ back_command *robot::route_control(map1 &now_map)
             // 换算成[0,2pai]
             if (data.des == data.table) // 机器人到达终点
             {
-               
+
                 data.control_flag = 0;
                 back_command *back = new back_command;
                 command *com = new command[3];
@@ -239,12 +246,14 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (abs(turn) > 0.8)
+                    if (bot_table_des(*this, now_table) <= 9)
+                        speed = 3;
+                    if (abs(turn) > min_angl)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
-                   
+
                     back_command *back = new back_command;
                     command *com = new command[2];
                     back->back_command = com;
@@ -261,12 +270,13 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (abs(turn) > 0.8)
+                    if (bot_table_des(*this, now_table) <= 9)
+                        speed = 3;
+                    if (abs(turn) > min_angl)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
                     }
-                    
 
                     back_command *back = new back_command;
                     command *com = new command[2];
@@ -336,7 +346,7 @@ back_command *robot::bot_avoid_crash(robot bot[])
         back->back_command[0].arg2 = 6;
         strcpy(back->back_command[1].command, "rotate");
         back->back_command[1].arg1 = data.num;
-        back->back_command[1].arg2 = -pai;
+        back->back_command[1].arg2 = pai;
     }
     else
     {
@@ -344,7 +354,7 @@ back_command *robot::bot_avoid_crash(robot bot[])
         back->back_command[0].command_tpye = 0;
         strcpy(back->back_command[0].command, "forward");
         back->back_command[0].arg1 = data.num;
-        back->back_command[0].arg2 = 6;
+        back->back_command[0].arg2 = -2;
         strcpy(back->back_command[1].command, "rotate");
         back->back_command[1].arg1 = data.num;
         back->back_command[1].arg2 = pai;
@@ -355,13 +365,25 @@ double turn_toward(double bot_toward, double table_bot_toward)
 {
 
     double angl = bot_toward - table_bot_toward;
-    if(angl<=0)angl=2*3.142+angl;
-   // if(angl<0.1||angl>2*3.14)return 0;
-    if(angl>3.14159)return 2*3.15-angl;
-    else return -angl;
-
-    
+    if (angl <= 0)
+        angl = 2 * 3.142 + angl;
+    // if(angl<0.1||angl>2*3.14)return 0;
+    if (angl > 3.14159)
+        return 2 * 3.15 - angl;
+    else
+        return -angl;
 
     //}
 
 } // 1表示逆时针 -1表示顺时针 0 表示不用转
+double bot_table_des(robot bot, table *now_table)
+{
+
+    if (bot.data.control_flag == 1)
+    {
+
+        return abs(pow(bot.data.x - now_table[bot.data.ori].x, 2) + pow(bot.data.y - now_table[bot.data.ori].y, 2));
+    }
+    else
+        return abs(pow(bot.data.x - now_table[bot.data.des].x, 2) + pow(bot.data.y - now_table[bot.data.des].y, 2));
+}
