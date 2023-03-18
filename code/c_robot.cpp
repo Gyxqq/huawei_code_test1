@@ -14,7 +14,7 @@ back_command *robot::route_control(map1 &now_map)
     int des = data.des;
     double speed = 6;
     double turn_speed = 1;
-    if (data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49)
+    if ((data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49)&&data.toward>0)
         speed = 2;
 
     if (data.control_flag == -1)
@@ -137,7 +137,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (abs(turn) > 0.5)
+                    if (abs(turn) > 0.8)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
@@ -160,7 +160,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (abs(turn) > 0.5)
+                    if (abs(turn) > 0.8)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
@@ -239,7 +239,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn < 0)
                 {
-                    if (abs(turn) > 0.5)
+                    if (abs(turn) > 0.8)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
@@ -261,7 +261,7 @@ back_command *robot::route_control(map1 &now_map)
                 }
                 if (turn > 0)
                 {
-                    if (abs(turn) > 0.5)
+                    if (abs(turn) > 0.8)
                     {
                         speed = 1; // 钝角转弯减速
                         turn_speed = 3.14;
