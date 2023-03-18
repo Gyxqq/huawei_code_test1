@@ -57,7 +57,8 @@
 
                                 if (now_bot[i4].data.control_flag != 0) // 确保机器人未被调度
                                     continue;
-                                double hash = value_hash(now_map, now_bot[i4], i, i3, now_frame);
+                                    std::cerr<<"gyx_con "<<" ori "<<i3<<" type "<<now_table[i3].type<<" des "<<i<<std::endl;
+                                double hash = value_hash(now_map, now_bot[i4], i3, i, now_frame);
                                 if (hash > com[i4].hash)
                                 {
                                     com[i4].des = i;

@@ -26,6 +26,7 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     int tablenum = *(now_map.gettable_num());
     table *temp_table = now_map.gettable();
     int oritype = temp_table[ori].type, destype = temp_table[des].type;
+    std::cerr<<std::endl<<"jztout"<<std::endl<<"1 "<<oritype<<std::endl;
     distance1 = sqrt((temp_table[ori].x - now_bot.data.x) * (temp_table[ori].x - now_bot.data.x) + (temp_table[ori].y - now_bot.data.y) * (temp_table[ori].y - now_bot.data.y));
     distance2 = sqrt((temp_table[ori].x - temp_table[des].x) * (temp_table[ori].x - temp_table[des].x) + (temp_table[ori].y - temp_table[des].y) * (temp_table[ori].y - temp_table[des].y));
     temp_frame1 = (distance2) / 6 * 50;
@@ -33,8 +34,9 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     double timerate = f(temp_frame1, 9000, 0.8);
     double profit = (money_out[temp_table[ori].type] * timerate) - money_in[temp_table[ori].type];
     val = profit / (distance1 + distance2);
+    std::cerr<<"2 "<<oritype<<std::endl;
     if(oritype==7)val=profit;
-    
+    std::cerr<<"3 "<<oritype<<std::endl;
     // 增加不同情况的权重
     if (oritype == 7 && (destype == 8 || destype == 9))
         val = val * _7to89;
@@ -58,17 +60,19 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
         val = val * _12to4;
     else if ((oritype >= 1 && oritype <= 3) && destype == 9)
         val = val * _123to9;
+        std::cerr<<"4 "<<oritype<<std::endl;
     for (int i = 0; i < tablenum; i++)
     {
         if (temp_table[i].type == 7 && temp_table[i].instats[oritype] == 0)
             val = val * tableneed;
     }
+    std::cerr<<"5 "<<oritype<<std::endl;
     if (destype == 7 && temp_table[des].instats[oritype] == 0)
         val = val * tableneed;
+    std::cerr<<"6 "<<oritype<<std::endl;
     if (temp_frame2 + delayframe > 9000 - now_frame)
         val = 0;
-
-    std::cerr<<std::endl<<std::endl<<std::endl<<"jzt"<<oritype<<std::endl<<std::endl<<std::endl<<val<<std::endl<<std::endl<<"jzt";
+    std::cerr<<"7 "<<oritype<<std::endl;
     return val;
 }
 
