@@ -3,13 +3,8 @@
 #include <algorithm>
 #include <math.h>
 #include <string.h>
-bool sort2(bot_control_command a, bot_control_command b);
-bool sort1(bot_control_command a, bot_control_command b);
-inline int find_near_bot(table &this_table, robot bot[]);
 
-int refind_des(table *tab_now, int obj_type, int table_num);
-inline int find_near_table(table *tab, int table_num, int now_table, int object_type);
-bool robot_table_control(map &now_map, robot now_bot[])
+bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
 {
 
     table *now_table = now_map.gettable();
@@ -47,7 +42,7 @@ bool robot_table_control(map &now_map, robot now_bot[])
                     continue;                              // 该原料不需要输入
                 for (int i3 = 0; i3 < table_num_now; i3++) // 遍历找到能提供物品的工作台
                 {
-                    int flag_2=0;
+                    int flag_2 = 0;
                     if (i3 == i)
                         continue;
 
@@ -63,20 +58,21 @@ bool robot_table_control(map &now_map, robot now_bot[])
 
                                 if (now_bot[i4].data.control_flag != 0) // 确保机器人未被调度
                                     continue;
-                                double hash = value_hash(now_map, now_bot[i4], i, i3);
+                                double hash = value_hash(now_map, now_bot[i4], i, i3, now_frame);
                                 if (hash > com[i4].hash)
                                 {
                                     com[i4].des = i;
                                     com[i4].ori = i3;
                                     com[i4].hash = hash; // 完成命令生成
                                     com[i4].type = i2;
-                                    flag_2=1;
+                                    flag_2 = 1;
                                     break;
                                 }
                             }
                         }
                     }
-                    if(flag_2==1)break;
+                    if (flag_2 == 1)
+                        break;
                 }
             }
         }
@@ -91,6 +87,5 @@ bool robot_table_control(map &now_map, robot now_bot[])
         now_bot[i].data.des = com[i].des;
         now_bot[i].data.ori = com[i].ori;
         now_bot[i].data.get = com[i].type; // 调度执行
-        
     }
 }
