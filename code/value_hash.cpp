@@ -1,78 +1,91 @@
 #include "data_struct.h"
 #include <math.h>
 #include "c_map.h"
-const double delayframe = 300; // 转弯减速等产生的时间差，用于调整
-const double _7to89 = 10000;
-const double _6to7 = 90;
-const double _5to7 = 90;
-const double _4to7 = 90;
-const double _6to9 = 40;
-const double _5to9 = 40;
-const double _4to9 = 40;
-const double _23to6 = 40;
-const double _13to5 = 40;
-const double _12to4 = 40;
-const double _123to9 = 10;
-const double tableneed = 120;
+#include <time.h>
+double go_time(map now_map, robot now_bot, int ori, int des);
+double time_xs = 1;
+double money_xs = 1;
+double yx_xs = 1;
 double f(double x, double maxX, double minRate); // 官方文档中的f函数，用以计算时间系数和碰撞系数
 double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
 {
-    double val = 0;                                                           // 输出的hash值
-    double temp_frame1 = 0;                                                   // 从起点到终点的持有帧
-    double temp_frame2 = 0;                                                   // 总帧数
-    double money_in[8] = {0, 3000, 4400, 5800, 15400, 17200, 19200, 76000};   // 买入价
-    double money_out[8] = {0, 6000, 7600, 9200, 22500, 25000, 27500, 105000}; // 卖出价
-    double distance1 = 0, distance2 = 0;
-    int tablenum = *(now_map.gettable_num());
-    table *temp_table = now_map.gettable();
-    int oritype = temp_table[ori].type, destype = temp_table[des].type;
-    std::cerr<<std::endl<<"jztout"<<std::endl<<"1 "<<oritype<<std::endl;
-    distance1 = sqrt((temp_table[ori].x - now_bot.data.x) * (temp_table[ori].x - now_bot.data.x) + (temp_table[ori].y - now_bot.data.y) * (temp_table[ori].y - now_bot.data.y));
-    distance2 = sqrt((temp_table[ori].x - temp_table[des].x) * (temp_table[ori].x - temp_table[des].x) + (temp_table[ori].y - temp_table[des].y) * (temp_table[ori].y - temp_table[des].y));
-    temp_frame1 = (distance2) / 6 * 50;
-    temp_frame2 = (distance1 + distance2) / 6 * 50;
-    double timerate = f(temp_frame1, 9000, 0.8);
-    double profit = (money_out[temp_table[ori].type] * timerate) - money_in[temp_table[ori].type];
-    val = profit / ((distance1 + distance2)*4);
-    std::cerr<<"2 "<<oritype<<std::endl;
-    if(oritype==7)val=profit;
-    std::cerr<<"3 "<<oritype<<std::endl;
-    // 增加不同情况的权重
-    if (oritype == 7 && (destype == 8 || destype == 9))
-        val = val * _7to89;
-    else if (oritype == 6 && destype == 7)
-        val = val * _6to7;
-    else if (oritype == 5 && destype == 7)
-        val = val * _5to7;
-    else if (oritype == 4 && destype == 7)
-        val = val * _4to7;
-    else if (oritype == 6 && destype == 9)
-        val = val * _6to9;
-    else if (oritype == 5 && destype == 9)
-        val = val * _5to9;
-    else if (oritype == 4 && destype == 9)
-        val = val * _4to9;
-    else if ((oritype == 2 || oritype == 3) && destype == 6)
-        val = val * _23to6;
-    else if ((oritype == 1 || oritype == 3) && destype == 5)
-        val = val * _13to5;
-    else if ((oritype == 1 || oritype == 2) && destype == 4)
-        val = val * _12to4;
-    else if ((oritype >= 1 && oritype <= 3) && destype == 9)
-        val = val * _123to9;
-        std::cerr<<"4 "<<oritype<<std::endl;
-    for (int i = 0; i < tablenum; i++)
+    table *tab = now_map.gettable();
+    int table_num = *now_map.gettable_num();
+    double time = go_time(now_map, now_bot, ori, des);
+    if ((9000 - now_frame) * 0.2 < time)
+        return -1;
+    // if (now_frame > 8500 && tab[now_bot.data.ori].type > 3)
+    // {
+    //     now_bot.data.control_flag = 2;
+    //     now_bot.data.object = 1;
+    //     now_bot.data.des = rand() % table_num;
+    //     return -1;
+    // }
+
+    double val = 0;
+    double money = 0;
+    if (tab[ori].type == 1)
+        money = 3000;
+    if (tab[ori].type == 2)
+        money = 3200;
+    if (tab[ori].type == 3)
+        money = 3400;
+    if (tab[ori].type == 4)
+        money = 7100;
+    if (tab[ori].type == 5)
+        money = 7800;
+    if (tab[ori].type == 6)
+        money = 8300;
+    if (tab[ori].type == 7)
+        money = 29000;
+    double yx = 1;
+    // if (tab[ori].type == 1 || tab[ori].type == 2 || tab[ori].type == 3)
+    // {
+
+    //     if (tab[des].type == 4 || tab[des].type == 5 || tab[des].type == 6)
+    //     {
+    //         yx = 1;
+    //     }
+    //     else
+    //         yx = 1;
+    // }
+    if (tab[ori].type == 4 || tab[ori].type == 5 || tab[ori].type == 6)
     {
-        if (temp_table[i].type == 7 && temp_table[i].instats[destype] == 0)
-            val = val * tableneed;
+        if (tab[des].type == 9)
+        {
+            yx = 2;
+        }
+        else
+            yx = 2;
     }
-    std::cerr<<"5 "<<oritype<<std::endl;
-    if (destype == 7 && temp_table[des].instats[oritype] == 0)
-        val = val * tableneed;
-    std::cerr<<"6 "<<oritype<<std::endl;
-    if (temp_frame2 + delayframe > 9000 - now_frame)
-        val = 0;
-    std::cerr<<"7 "<<oritype<<std::endl;
+    if (tab[ori].type == 7)
+    {
+        if (tab[des].type == 8)
+        {
+            yx = 20;
+        }
+        else
+            yx = 20;
+    }
+    // for (int i = 0; i < table_num; i++)
+    // {
+    //     if (tab[i].type == 7)
+    //     {
+    //         int i = 0;
+    //         if (tab[i].instats[4] == 1)
+    //             i++;
+    //         if (tab[i].instats[5] == 1)
+    //             i++;
+    //         if (tab[i].instats[6] == 1)
+    //             i++;
+    //         if (tab[i].instats[tab[des].type] == 0)
+    //             yx = 2;
+    //         else
+    //             yx = yx;
+    //     }
+    // }
+
+    val = yx * money_xs * money / (time_xs * sqrt(time* time*time));
     return val;
 }
 
@@ -86,4 +99,12 @@ double f(double x, double maxX, double minRate)
         ans = (1 - std::sqrt(1 - std::pow(1 - x / maxX, 2))) * (1 - minRate) + minRate;
     }
     return ans;
+}
+double go_time(map now_map, robot now_bot, int ori, int des)
+{
+    table *tab = now_map.gettable();
+    double des1 = pow(tab[ori].x - now_bot.data.x, 2) + pow(tab[ori].y - now_bot.data.y, 2);
+    double des2 = pow(tab[ori].x - tab[des].x, 2) + pow(tab[ori].y - tab[des].y, 2);
+    double time = (sqrt(des1)+sqrt(des2)) / 3.5;
+    return time;
 }

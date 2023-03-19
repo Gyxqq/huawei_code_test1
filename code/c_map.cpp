@@ -18,6 +18,7 @@ bool map::mapinit(robot bot[])
                 bot[count_bot].data.num = count_bot;
                 bot[count_bot].data.object = 0;
                  bot[count_bot].data.get = 0;
+                 bot[count_bot].data.rest_crash = 0;
                 count_bot++;
             }
             if (map[y][x] <= '9' && map[y][x] >= '0')

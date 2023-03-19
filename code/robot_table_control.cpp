@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <math.h>
 #include <string.h>
- bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
+bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
 {
 
     table *now_table = now_map.gettable();
@@ -31,7 +31,7 @@
                 for (int i4 = 0; i4 < 4; i4++) // 确保一个原料槽由一个机器人提供
                 {
 
-                    if (now_bot[i4].data.control_flag != 0 && now_bot[i4].data.des == i && now_bot[i4].data.get == i2)
+                    if (now_bot[i4].data.control_flag != 0 && now_bot[i4].data.des == i && now_bot[i4].data.get == i2 && now_table[now_bot[i4].data.des].type != 8 && now_table[now_bot[i4].data.des].type != 9)
                     {
                         flag_1 = 1;
                     }
@@ -49,15 +49,15 @@
                     { // 有原料产出匹配
                         if (now_table[i3].outstats == 0)
                             continue; // 判断产品槽有无产品
-                        if (now_table[i3].out_control == 0)
+                        if (now_table[i3].out_control == 0 || (now_table[i3].type <= 3 && now_table[i3].rest < 40))
                         { // 产出是否被分配
-
                             for (int i4 = 0; i4 < 4; i4++)
                             { // 寻找机器人
 
-                                if (now_bot[i4].data.control_flag != 0) // 确保机器人未被调度
+                                if (now_bot[i4].data.control_flag!=0) // 确保机器人未被调度
                                     continue;
-                                    std::cerr<<"gyx_con "<<" ori "<<i3<<" type "<<now_table[i3].type<<" des "<<i<<std::endl;
+                                std::cerr << "gyx_con "
+                                          << " ori " << i3 << " type " << now_table[i3].type << " des " << i << std::endl;
                                 double hash = value_hash(now_map, now_bot[i4], i3, i, now_frame);
                                 if (hash > com[i4].hash)
                                 {

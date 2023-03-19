@@ -85,6 +85,7 @@ struct robot_data
     int ori;           // 当前调度起点
     int des;           // 当前调度终点
     int get;
+    int rest_crash; 
 };
 #endif
 
