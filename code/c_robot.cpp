@@ -18,7 +18,7 @@ back_command *robot::route_control(map1 &now_map)
     double turn_speed = 3.14;
     double min_angl = 1;
 
-    if ((data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49) && data.toward > 0.1 && data.toward < 3.13)
+    if ((data.x < 1 || data.x > 49 || data.y < 1 || data.y > 49) && data.toward > 0.3 && data.toward < 3)
         speed = 2;
 
     if (data.control_flag == -1)
@@ -150,13 +150,13 @@ back_command *robot::route_control(map1 &now_map)
                     if (des_now < 4)
                     {
                         speed = 2;
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
 
                     if (abs(turn) > min_angl)
                     {
                         speed = 2; // 钝角转弯减速
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
 
                     back_command *back = new back_command;
@@ -184,12 +184,12 @@ back_command *robot::route_control(map1 &now_map)
                     if (des_now < 4)
                     {
                         speed = 2;
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
                     if (abs(turn) > min_angl)
                     {
                         speed = 2; // 钝角转弯减速
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
 
                     back_command *back = new back_command;
@@ -277,12 +277,12 @@ back_command *robot::route_control(map1 &now_map)
                     if (des_now < 4)
                     {
                         speed = 2;
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
                     if (abs(turn) > min_angl)
                     {
                         speed = 2; // 钝角转弯减速
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
 
                     back_command *back = new back_command;
@@ -310,12 +310,12 @@ back_command *robot::route_control(map1 &now_map)
                     if (des_now < 4)
                     {
                         speed = 2;
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
                     if (abs(turn) > min_angl)
                     {
                         speed = 2; // 钝角转弯减速
-                        turn_speed = 3;
+                        turn_speed = 3.14;
                     }
 
                     back_command *back = new back_command;

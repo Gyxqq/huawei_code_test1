@@ -113,7 +113,7 @@ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
     }
     for (int i = 0; i < 4; i++)
     {
-        if (now_frame > 8800 && now_bot[i].data.control_flag == 0)
+        if (now_frame > 8500 && now_bot[i].data.control_flag == 0)
         {
             now_bot[i].data.control_flag = 2;
             now_bot[i].data.des = rand() % table_num_now;
