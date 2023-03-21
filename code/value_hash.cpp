@@ -85,7 +85,7 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     //     }
     // }
 
-    val = yx * money_xs * money / (time_xs*pow(time,4));
+    val = yx * money_xs * money / (time_xs*pow(time,8));
     return val;
 }
 
