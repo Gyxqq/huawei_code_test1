@@ -14,7 +14,8 @@ bool process_control(map &now_map, robot now_bot[])
     input(frame, money, now_map.gettable(), now_map.gettable_num(), now_bot);
     //  std::cerr<<"gyx "; // 输入
     std::cerr << "process_control frame=" << frame << std::endl;
-   if(frame<8510)bool control = robot_table_control(now_map, now_bot, frame);
+    //  if(frame<8510)
+    bool control = robot_table_control(now_map, now_bot, frame);
 
     // std::cerr<<"gyx ";                              // 机器人调度
     back_command *this_back_command = new back_command[4]; // 为输出命令申请空间

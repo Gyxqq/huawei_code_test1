@@ -53,10 +53,10 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     {
         if (tab[des].type == 9)
         {
-            yx = 2;
+            yx = 15;
         }
         else
-            yx = 2;
+            yx = 15;
     }
     if (tab[ori].type == 7)
     {
@@ -85,7 +85,7 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     //     }
     // }
 
-    val = yx * money_xs * money / (time_xs * sqrt(time* time*time));
+    val = yx * money_xs * money / (time_xs*pow(time,4));
     return val;
 }
 
