@@ -40,7 +40,7 @@ struct command
     1   destroy 摧毁物品            机器人ID[0，3]                  none
     */
 
-    double arg1;
+    int arg1;
     double arg2;
 };
 
@@ -85,7 +85,8 @@ struct robot_data
     int ori;           // 当前调度起点
     int des;           // 当前调度终点
     int get;
-    int rest_crash; 
+    int rest_crash;
+    int avoid_type;    //1表示向右转-1表示向左转0表示减速 
 };
 #endif
 

@@ -337,81 +337,279 @@ back_command *robot::route_control(map1 &now_map)
     }
 };
 
-bool robot::avoid_crash(robot bot[])
+bool robot::avoid_crash(robot bot[],int now_frame)
 {
-    double next_x, next_y;
-    next_x = data.x;
-    next_y = data.y;
-    int flag = 0;
-    double angl1 = data.toward < 0 ? 2 * 3.1416 - data.toward : data.toward;
-
-    for (int i = 0; i < 4; i++)
+    bool crash = false;
+    robot_data temp_bot[4];
+    for(int i=0;i<4;i++)memcpy(&temp_bot[i],&bot[i],sizeof(robot_data));
+    for(int i=0;i<4;i++)
     {
-        if (i == data.num)
-            continue;
-        double x = bot[i].data.x;
-        double y = bot[i].data.y;
-        double angl2 = bot[i].data.toward < 0 ? 2 * 3.1416 - bot[i].data.toward : bot[i].data.toward;
-        double angl3 = angl1 - angl2 < 0 ? 2 * 3.1416 - (angl1 - angl2) : angl1 - angl2;
-        if (angl3 < 3.5 && angl3 > 2.8)
+        if(i==data.num)continue;
+        double x0=(temp_bot[i].y-data.y+tan(data.toward)*data.x-tan(temp_bot[i].toward)*temp_bot[i].x)/(tan(data.toward)-tan(temp_bot[i].toward));
+        double y0=tan(data.toward)*(x0-data.x)+data.y;
+        double distance1=sqrt(pow(data.x-x0,2)+pow(data.y-y0,2));
+        double distance2=sqrt(pow(x0-temp_bot[i].x,2)+pow(y0-temp_bot[i].y,2));
+        double distance=sqrt(pow(data.x-temp_bot[i].x,2)+pow(data.y-temp_bot[i].y,2));
+        if(now_frame>=750&&distance<=3&&(cos(data.toward)*cos(temp_bot[i].toward)+sin(data.toward)*sin(temp_bot[i].toward))<=-0.8&&temp_bot[i].rest_crash==0)
         {
-            if (pow(next_x - x, 2) + pow(next_y - y, 2) < 0.4)
+            if(abs(temp_bot[i].toward)<=0.1)
             {
-                std::cerr << "\ncrash\n";
-                flag = 1;
-                data.rest_crash = 40;
-                break;
+                if(data.toward>0)
+                {
+                    data.avoid_type=1;
+                    data.rest_crash=50;
+                    crash = true;
+                }else{
+                    data.avoid_type=-1;
+                    data.rest_crash=50;
+                    crash = true;
+                }
+            }else{
+                if(temp_bot[i].toward>0)temp_bot[i].toward=temp_bot[i].toward-3.1415926;
+                else temp_bot[i].toward=3.1415926+temp_bot[i].toward;
+                if(temp_bot[i].toward-data.toward>0)
+                {
+                    data.avoid_type=1;
+                    data.rest_crash=30;
+                    crash = true;
+                }else{
+                    data.avoid_type=-1;
+                    data.rest_crash=30;
+                    crash = true;
+                }
             }
+        }else if(now_frame>=750&&distance<=2&&(cos(data.toward)*cos(temp_bot[i].toward)+sin(data.toward)*sin(temp_bot[i].toward))>=0.9&&abs(atan((data.y-temp_bot[i].y)/(data.x-temp_bot[i].x))-atan(tan(data.toward)))<=0.2)
+        {
+            data.avoid_type=0;
+            //data.rest_crash=30;
+            crash = true;
+        }
+        else if(now_frame>=750&&abs(distance1-distance2)<=0.8&&distance<=6)
+        {
+            data.avoid_type=0;
+            //data.rest_crash=30;
+            crash = true;
         }
     }
-    return flag;
+//     std::cerr<<"avoid_crash "<<std::endl;
+//     bool crash = false;
+//     double time = 0.02; // 一帧在判题器中的时间
+//     robot_data temp_bot[4];
+//     for(int i=0;i<4;i++)memcpy(&temp_bot[i],&bot[i],sizeof(robot_data));
+//     for (int frame = 0; frame < 5; frame++)
+//     {
+//         for (int i = 0; i < 4; i++) // 计算所有机器人下一帧大概的位置
+//         {
+//             double v = sqrt(temp_bot[i].speed_x * temp_bot[i].speed_x + temp_bot[i].speed_y * temp_bot[i].speed_y);
+//             temp_bot[i].x = temp_bot[i].x + v * cos(temp_bot[i].toward) * time;
+//             temp_bot[i].y = temp_bot[i].y + v * sin(temp_bot[i].toward) * time;
+//             temp_bot[i].toward = temp_bot[i].toward + temp_bot[i].ang_speed * time;
+//         }
+//         for (int i = 0; i < 4; i++) // 分别判断各个机器人是否可能碰撞（已考虑体积变大的情况）
+//         {
+//             if (i != data.num)
+//             {
+//                 double distance = sqrt((temp_bot[i].x - temp_bot[data.num].x) * (temp_bot[i].x - temp_bot[data.num].x) + (temp_bot[i].y - temp_bot[data.num].y) * (bot[i].data.y - bot[data.num].data.y));
+//                 if ((!(temp_bot[i].control_flag || temp_bot[data.num].control_flag) && distance <= 1.0)&&now_frame>=250)
+//                 {
+//                     data.rest_crash=20;
+//                     crash = true;
+//                 }
+//                 else if (((temp_bot[i].control_flag || temp_bot[data.num].control_flag) && distance <= 1.2)&&now_frame>=250)
+//                 {
+//                     data.rest_crash=20;
+//                     crash = true;
+//                 }
+//             }
+//         }
+//     }
+         return crash;
 }
 
-back_command *robot::bot_avoid_crash(robot bot[])
+back_command* robot::bot_avoid_crash(robot bot[],int now_frame)
 {
-    data.rest_crash--;
-    const int pai = 3.14;
-    back_command *back = new back_command;
+    bool crash=false;
+    std::cerr<<"bot_avoid_crash "<<std::endl<<data.rest_crash<<std::endl;
+    const double pai = 3.14159;
+    back_command* back = new back_command;
     back->back_command = new command[2];
-    if (data.rest_crash > 30)
+    robot_data temp_bot[4];
+    for(int i=0;i<4;i++)memcpy(&temp_bot[i],&bot[i],sizeof(robot_data));
+    for(int i=0;i<4;i++)
     {
-        back->command_num = 2;
-        back->back_command[0].command_tpye = 0;
-        strcpy(back->back_command[0].command, "forward");
-        back->back_command[0].arg1 = data.num;
-        back->back_command[0].arg2 = -2;
-        strcpy(back->back_command[1].command, "rotate");
-        back->back_command[1].arg1 = data.num;
-        back->back_command[1].arg2 = 0;
+        
+        if(i==data.num)continue;
+        double x0=(temp_bot[i].y-data.y+tan(data.toward)*data.x-tan(temp_bot[i].toward)*temp_bot[i].x)/(tan(data.toward)-tan(temp_bot[i].toward));
+        double y0=tan(data.toward)*(x0-data.x)+data.y;
+        double distance1=sqrt(pow(data.x-x0,2)+pow(data.y-y0,2));
+        double distance2=sqrt(pow(x0-temp_bot[i].x,2)+pow(y0-temp_bot[i].y,2));
+        double distance=sqrt(pow(data.x-temp_bot[i].x,2)+pow(data.y-temp_bot[i].y,2));
+        if(now_frame>=750&&distance<=4&&(cos(data.toward)*cos(temp_bot[i].toward)+sin(data.toward)*sin(temp_bot[i].toward))<=-0.8&&temp_bot[i].rest_crash==0)
+        {
+            if(abs(temp_bot[i].toward)<=0.1)
+            {
+                if(data.toward>0)
+                {
+                    std::cerr<<"@right"<<std::endl;
+                    back->command_num = 2;
+                    back->back_command[0].command_tpye = 0;
+                    strcpy(back->back_command[0].command, "rotate");
+                    back->back_command[0].arg1 = data.num;
+                    back->back_command[0].arg2 = -pai;
+                    back->back_command[1].command_tpye = 0;
+                    strcpy(back->back_command[1].command, "forward");
+                    back->back_command[1].arg1 = data.num;
+                    back->back_command[1].arg2 = 6;
+                    crash=true;
+                }else{
+                    std::cerr<<"@left"<<std::endl;
+                    back->command_num = 2;
+                    back->back_command[0].command_tpye = 0;
+                    strcpy(back->back_command[0].command, "rotate");
+                    back->back_command[0].arg1 = data.num;
+                    back->back_command[0].arg2 = pai;
+                    back->back_command[1].command_tpye = 0;
+                    strcpy(back->back_command[1].command, "forward");
+                    back->back_command[1].arg1 = data.num;
+                    back->back_command[1].arg2 = 6;
+                    crash=true;
+                }
+            }else{
+                if(temp_bot[i].toward>0)temp_bot[i].toward=temp_bot[i].toward-3.1415926;
+                else temp_bot[i].toward=3.1415926+temp_bot[i].toward;
+                if(temp_bot[i].toward-data.toward>0)
+                {
+                    std::cerr<<"@right"<<std::endl;
+                    back->command_num = 2;
+                    back->back_command[0].command_tpye = 0;
+                    strcpy(back->back_command[0].command, "rotate");
+                    back->back_command[0].arg1 = data.num;
+                    back->back_command[0].arg2 = -pai;
+                    back->back_command[1].command_tpye = 0;
+                    strcpy(back->back_command[1].command, "forward");
+                    back->back_command[1].arg1 = data.num;
+                    back->back_command[1].arg2 = 6;
+                    crash=true;
+                }else{
+                    std::cerr<<"@left"<<std::endl;
+                    back->command_num = 2;
+                    back->back_command[0].command_tpye = 0;
+                    strcpy(back->back_command[0].command, "rotate");
+                    back->back_command[0].arg1 = data.num;
+                    back->back_command[0].arg2 = pai;
+                    back->back_command[1].command_tpye = 0;
+                    strcpy(back->back_command[1].command, "forward");
+                    back->back_command[1].arg1 = data.num;
+                    back->back_command[1].arg2 = 6;
+                    crash=true;
+                }
+            }
+        }
+        // else if(now_frame>=750&&distance<=2&&(cos(data.toward)*cos(temp_bot[i].toward)+sin(data.toward)*sin(temp_bot[i].toward))>=0.9&&abs(atan((data.y-temp_bot[i].y)/(data.x-temp_bot[i].x))-atan(tan(data.toward)))<=0.2)
+        // {
+        //     back->command_num = 1;
+        //     back->back_command[0].command_tpye = 0;
+        //     strcpy(back->back_command[0].command, "forward");
+        //     back->back_command[0].arg1 = data.num;
+        //     back->back_command[0].arg2 = 3;
+        //     crash=true;
+        // }
+        // else if(now_frame>=750&&abs(distance1-distance2)<=0.8&&distance<=6)
+        // {
+        //     back->command_num = 1;
+        //     back->back_command[0].command_tpye = 0;
+        //     strcpy(back->back_command[0].command, "forward");
+        //     back->back_command[0].arg1 = data.num;
+        //     back->back_command[0].arg2 = 3;
+        //     crash=true;
+        // }
     }
-
-    if (data.rest_crash <= 30)
-    {
-        back->command_num = 2;
-        back->back_command[0].command_tpye = 0;
-        strcpy(back->back_command[0].command, "forward");
-        back->back_command[0].arg1 = data.num;
-        back->back_command[0].arg2 = 0;
-        strcpy(back->back_command[1].command, "rotate");
-        back->back_command[1].arg1 = data.num;
-        back->back_command[1].arg2 = pai;
-    }
-
-    // if (abs(data.toward) > 0.5 * 3.14159)
+    if(crash)return back;
+    else return NULL;
+    // if(data.avoid_type==1)
     // {
-    //     if (data.toward > 0)
-    //         back->back_command[1].arg2 = -pai;
-    //     else
-    // back->back_command[1].arg2 = pai;
+    //     if(data.rest_crash>=data.rest_crash/2)
+    //     {
+    //         std::cerr<<"@right"<<std::endl;
+    //         back->command_num = 2;
+    //         back->back_command[0].command_tpye = 0;
+    //         strcpy(back->back_command[0].command, "rotate");
+    //         back->back_command[0].arg1 = data.num;
+    //         back->back_command[0].arg2 = -pai;
+    //         back->back_command[1].command_tpye = 0;
+    //         strcpy(back->back_command[1].command, "forward");
+    //         back->back_command[1].arg1 = data.num;
+    //         back->back_command[1].arg2 = 6;
+    //     }else{
+    //         std::cerr<<"@left"<<std::endl;
+    //         back->command_num = 2;
+    //         back->back_command[0].command_tpye = 0;
+    //         strcpy(back->back_command[0].command, "rotate");
+    //         back->back_command[0].arg1 = data.num;
+    //         back->back_command[0].arg2 = pai;
+    //         back->back_command[1].command_tpye = 0;
+    //         strcpy(back->back_command[1].command, "forward");
+    //         back->back_command[1].arg1 = data.num;
+    //         back->back_command[1].arg2 = 6;
+    //     }
+    // }else if(data.avoid_type==-1)
+    // {
+    //     if(data.rest_crash>=data.rest_crash/2)
+    //     {
+    //         back->command_num = 2;
+    //         back->back_command[0].command_tpye = 0;
+    //         strcpy(back->back_command[0].command, "rotate");
+    //         back->back_command[0].arg1 = data.num;
+    //         back->back_command[0].arg2 = pai;
+    //         back->back_command[1].command_tpye = 0;
+    //         strcpy(back->back_command[1].command, "forward");
+    //         back->back_command[1].arg1 = data.num;
+    //         back->back_command[1].arg2 = 6;
+    //     }else{
+    //         back->command_num = 2;
+    //         back->back_command[0].command_tpye = 0;
+    //         strcpy(back->back_command[0].command, "rotate");
+    //         back->back_command[0].arg1 = data.num;
+    //         back->back_command[0].arg2 = -pai;
+    //         back->back_command[1].command_tpye = 0;
+    //         strcpy(back->back_command[1].command, "forward");
+    //         back->back_command[1].arg1 = data.num;
+    //         back->back_command[1].arg2 = 6;
+    //     }
+    // }else{
+    //         back->command_num = 1;
+    //         back->back_command[0].command_tpye = 0;
+    //         strcpy(back->back_command[0].command, "forward");
+    //         back->back_command[0].arg1 = data.num;
+    //         back->back_command[0].arg2 = 3;
+    // }
+    
+    // if (bot[data.num].data.ang_speed >= 0)
+    // {
+        // back->command_num = 1;
+        // back->back_command[0].command_tpye = 0;
+        // strcpy(back->back_command[0].command, "rotate");
+        // back->back_command[0].arg1 = data.num;
+        // back->back_command[0].arg2 = pai;
+        // back->back_command[0].command_tpye = 0;
+        // strcpy(back->back_command[0].command, "forward");
+        // back->back_command[0].arg1 = data.num;
+        // back->back_command[0].arg2 = 1;
+        
     // }
     // else
     // {
-    //     if (data.toward > 0)
-    //         back->back_command[1].arg2 = pai;
-    //         else  back->back_command[1].arg2 = -pai;
+    //     back->command_num = 1;
+    //     // back->back_command[0].command_tpye = 0;
+    //     // strcpy(back->back_command[0].command, "rotate");
+    //     // back->back_command[0].arg1 = data.num;
+    //     // back->back_command[0].arg2 = -pai;
+    //     back->back_command[0].command_tpye = 0;
+    //     strcpy(back->back_command[0].command, "forward");
+    //     back->back_command[0].arg1 = data.num;
+    //     back->back_command[0].arg2 = 1;
+        
     // }
-
-    return back;
 }
 double turn_toward(double bot_toward, double table_bot_toward)
 {

@@ -10,11 +10,11 @@ public:
 
     back_command* route_control(map1& now_map);
     // 从源地址取物品送到目的地址的路线控制
-    bool avoid_crash(robot bot[]);
+    bool avoid_crash(robot bot[],int now_frame);
     
     
     // 返回五帧后是否有碰撞风险 有返回1 无返回0
-    back_command* bot_avoid_crash(robot bot[]);
+    back_command* bot_avoid_crash(robot bot[],int now_frame);
 
     // 生成小车避障时需要的指令集
 };

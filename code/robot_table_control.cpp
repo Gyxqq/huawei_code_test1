@@ -1,6 +1,7 @@
 #include "data_struct.h"
 #include "function.h"
 #include <algorithm>
+#include <time.h>
 #include <math.h>
 #include <string.h>
 double go_time1(map now_map, robot now_bot, int ori, int des);
