@@ -20,7 +20,7 @@ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
     }
     for (int i = 0; i < table_num_now; i++) // 工作台编号
     {
-
+        if(now_table[i].usable==0)continue;
         for (int i2 = 1; i2 < 8; i2++) // 需要的物品
         {
 
