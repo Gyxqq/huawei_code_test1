@@ -14,7 +14,7 @@ bool process_control(map &now_map, robot now_bot[])
     input(frame, money, now_map.gettable(), now_map.gettable_num(), now_bot);
     //  std::cerr<<"gyx "; // 输入
     std::cerr << "process_control frame=" << frame << std::endl;
-    if (frame < 8800)
+    if (frame < 8700)
       bool control = robot_table_control(now_map, now_bot, frame);
 
     // std::cerr<<"gyx ";                              // 机器人调度

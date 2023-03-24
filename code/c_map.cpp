@@ -90,35 +90,22 @@ bool map::mapinit(robot bot[])
             }
         }
     }
-    if (table_num == 43)
+    if(table_num==43)
     {
-        for (int i = 1; i <= 8; i++)
+        for(int i=1;i<=40;i++)
         {
-            table_in_map[i].usable = 0;
+            table_in_map[i].usable=0;
         }
-        for (int i = 10; i <= 12; i++)
-        {
-            table_in_map[i].usable = 0;
-        }
-        table_in_map[14].usable = 0;
-        table_in_map[18].usable = 0;
-        table_in_map[19].usable = 0;
-        table_in_map[21].usable = 0;
-        table_in_map[22].usable = 0;
-        table_in_map[23].usable = 0;
-        table_in_map[25].usable = 0;
-        table_in_map[26].usable = 0;
-        table_in_map[27].usable = 0;
-        table_in_map[28].usable = 0;
-        table_in_map[29].usable = 0;
-        table_in_map[30].usable = 0;
-        table_in_map[31].usable = 0;
-        for (int i = 32; i <= 40; i++)
-        {
-            table_in_map[i].usable = 0;
-        }
+        table_in_map[13].usable=1;
+        table_in_map[10].usable=1;
+        table_in_map[16].usable=1;
+        table_in_map[20].usable=1;
+        //table_in_map[21].usable=1;
+        table_in_map[23].usable=1;
+        table_in_map[31].usable=1;
+        
     }
-    if (table_num == 25)
+    else if (table_num == 25)
     {
         for (int i = 0; i < table_num; i++)
         {
@@ -136,6 +123,67 @@ bool map::mapinit(robot bot[])
         table_in_map[19].usable = 0;
           table_in_map[14].usable = 0;
         // table_in_map[3].usable=0;
+    }
+    else if(table_num==50){
+        // // table_in_map[6].usable=0;
+        // table_in_map[15].usable=0;
+        // // table_in_map[21].usable=0;
+        // // table_in_map[36].usable=0;
+        // table_in_map[49].usable=0;
+
+        // // table_in_map[7].usable=0;
+        // // table_in_map[16].usable=0;
+        // table_in_map[31].usable=0;
+        // table_in_map[35].usable=0;
+        // // table_in_map[37].usable=0;
+
+        // // table_in_map[0].usable=0;
+        // table_in_map[19].usable=0;
+        // // table_in_map[28].usable=0;
+        // table_in_map[39].usable=0;
+        // // table_in_map[42].usable=0;
+        // table_in_map[43].usable=0;
+
+        // table_in_map[8].usable=0;
+        // table_in_map[9].usable=0;
+        // table_in_map[10].usable=0;
+        // table_in_map[17].usable=0;
+        // table_in_map[18].usable=0;
+        // table_in_map[26].usable=0;
+        // table_in_map[27].usable=0;
+        // table_in_map[30].usable=0;
+        // table_in_map[38].usable=0;
+        // table_in_map[40].usable=0;
+        // table_in_map[46].usable=0;
+
+        // table_in_map[1].usable=0;
+        // table_in_map[2].usable=0;
+        // table_in_map[3].usable=0;
+        // table_in_map[4].usable=0;
+        // table_in_map[5].usable=0;
+        // table_in_map[44].usable=0;
+        // table_in_map[41].usable=0;
+        // table_in_map[45].usable=0;
+        // table_in_map[47].usable=0;
+        // table_in_map[48].usable=0;
+
+        // // table_in_map[8].usable=0;
+        // table_in_map[12].usable=0;
+        // table_in_map[13].usable=0;
+        // table_in_map[14].usable=0;
+        // table_in_map[20].usable=0;
+        // // table_in_map[22].usable=0;
+        // // table_in_map[23].usable=0;
+        // table_in_map[25].usable=0;
+        // table_in_map[29].usable=0;
+        // table_in_map[32].usable=0;
+        // table_in_map[33].usable=0;
+        // table_in_map[34].usable=0;
+
+        // table_in_map[24].bot_inttats[0]=0;
+        table_in_map[24].bot_inttats[1]=0;
+        table_in_map[24].bot_inttats[2]=0;
+        table_in_map[24].bot_inttats[3]=0;
     }
     char ok[4];
     std::cin >> ok;
