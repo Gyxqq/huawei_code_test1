@@ -9,6 +9,7 @@ double yx_xs = 1;
 double f(double x, double maxX, double minRate); // 官方文档中的f函数，用以计算时间系数和碰撞系数
 double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
 {
+
     table *tab = now_map.gettable();
     int table_num = *now_map.gettable_num();
     double time = go_time(now_map, now_bot, ori, des);
@@ -21,72 +22,128 @@ double value_hash(map now_map, robot now_bot, int ori, int des, int now_frame)
     //     now_bot.data.des = rand() % table_num;
     //     return -1;
     // }
-
-    double val = 0;
-    double money = 0;
-    if (tab[ori].type == 1)
-        money = 3000;
-    if (tab[ori].type == 2)
-        money = 3200;
-    if (tab[ori].type == 3)
-        money = 3400;
-    if (tab[ori].type == 4)
-        money = 7100;
-    if (tab[ori].type == 5)
-        money = 7800;
-    if (tab[ori].type == 6)
-        money = 8300;
-    if (tab[ori].type == 7)
-        money = 29000;
-    double yx = 1;
-    // if (tab[ori].type == 1 || tab[ori].type == 2 || tab[ori].type == 3)
-    // {
-
-    //     if (tab[des].type == 4 || tab[des].type == 5 || tab[des].type == 6)
-    //     {
-    //         yx = 1;
-    //     }
-    //     else
-    //         yx = 1;
-    // }
-    if (tab[ori].type == 4 || tab[ori].type == 5 || tab[ori].type == 6)
+    if (table_num == 25)
     {
-        if (tab[des].type == 9)
+        double val = 0;
+        double money = 0;
+        if (tab[ori].type == 1)
+            money = 3000;
+        if (tab[ori].type == 2)
+            money = 3200;
+        if (tab[ori].type == 3)
+            money = 3400;
+        if (tab[ori].type == 4)
+            money = 7100;
+        if (tab[ori].type == 5)
+            money = 7800;
+        if (tab[ori].type == 6)
+            money = 8300;
+        if (tab[ori].type == 7)
+            money = 29000;
+        double yx = 1;
+        if (tab[ori].type == 4 || tab[ori].type == 5 || tab[ori].type == 6)
         {
-            yx = 15;
+            if (tab[des].type == 7)
+                yx = 300;
         }
-        else
-            yx = 15;
-    }
-    if (tab[ori].type == 7)
-    {
-        if (tab[des].type == 8)
+        if (tab[ori].type == 7)
         {
-            yx = 20;
+            if (tab[des].type == 8)
+            {
+                yx = 2000;
+            }
+            else
+                yx = 2000;
         }
-        else
-            yx = 20;
-    }
-    // for (int i = 0; i < table_num; i++)
-    // {
-    //     if (tab[i].type == 7)
-    //     {
-    //         int i = 0;
-    //         if (tab[i].instats[4] == 1)
-    //             i++;
-    //         if (tab[i].instats[5] == 1)
-    //             i++;
-    //         if (tab[i].instats[6] == 1)
-    //             i++;
-    //         if (tab[i].instats[tab[des].type] == 0)
-    //             yx = 2;
-    //         else
-    //             yx = yx;
-    //     }
-    // }
+        for (int i = 0; i < table_num; i++)
+        {
+            if (tab[i].type == 7 && tab[i].usable == 1)
+            {
+                int i2 = 1;
+                if (tab[i].instats[4] == 1)
+                    i2++;
+                if (tab[i].instats[5] == 1)
+                    i2++;
+                if (tab[i].instats[6] == 1)
+                    i2++;
+                if (tab[i].instats[tab[des].type] == 0)
+                    yx *= i2;
+               
+            }
+        }
 
-    val = yx * money_xs * money / (time_xs*pow(time,8));
-    return val;
+        val = yx/time;
+        return val;
+    }
+    else
+    {
+
+        double val = 0;
+        double money = 0;
+        if (tab[ori].type == 1)
+            money = 3000;
+        if (tab[ori].type == 2)
+            money = 3200;
+        if (tab[ori].type == 3)
+            money = 3400;
+        if (tab[ori].type == 4)
+            money = 7100;
+        if (tab[ori].type == 5)
+            money = 7800;
+        if (tab[ori].type == 6)
+            money = 8300;
+        if (tab[ori].type == 7)
+            money = 29000;
+        double yx = 1;
+        // if (tab[ori].type == 1 || tab[ori].type == 2 || tab[ori].type == 3)
+        // {
+
+        //     if (tab[des].type == 4 || tab[des].type == 5 || tab[des].type == 6)
+        //     {
+        //         yx = 1;
+        //     }
+        //     else
+        //         yx = 1;
+        // }
+        if (tab[ori].type == 4 || tab[ori].type == 5 || tab[ori].type == 6)
+        {
+            if (tab[des].type == 9)
+            {
+                yx = 15;
+            }
+            else
+                yx = 15;
+        }
+        if (tab[ori].type == 7)
+        {
+            if (tab[des].type == 8)
+            {
+                yx = 20;
+            }
+            else
+                yx = 20;
+        }
+        // for (int i = 0; i < table_num; i++)
+        // {
+        //     if (tab[i].type == 7)
+        //     {
+        //         int i = 0;
+        //         if (tab[i].instats[4] == 1)
+        //             i++;
+        //         if (tab[i].instats[5] == 1)
+        //             i++;
+        //         if (tab[i].instats[6] == 1)
+        //             i++;
+        //         if (tab[i].instats[tab[des].type] == 0)
+        //             yx = 2;
+        //         else
+        //             yx = yx;
+        //     }
+        // }
+
+        val = yx * money_xs * money / (time_xs * pow(time, 8));
+        return val;
+    }
 }
 
 double f(double x, double maxX, double minRate)
@@ -105,6 +162,6 @@ double go_time(map now_map, robot now_bot, int ori, int des)
     table *tab = now_map.gettable();
     double des1 = pow(tab[ori].x - now_bot.data.x, 2) + pow(tab[ori].y - now_bot.data.y, 2);
     double des2 = pow(tab[ori].x - tab[des].x, 2) + pow(tab[ori].y - tab[des].y, 2);
-    double time = (sqrt(des1)+sqrt(des2)) / 3.5;
+    double time = (sqrt(des1) + sqrt(des2)) / 3.5;
     return time;
 }

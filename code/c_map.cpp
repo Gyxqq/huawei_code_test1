@@ -17,8 +17,8 @@ bool map::mapinit(robot bot[])
                 bot[count_bot].data.control_flag = 0;
                 bot[count_bot].data.num = count_bot;
                 bot[count_bot].data.object = 0;
-                 bot[count_bot].data.get = 0;
-                 bot[count_bot].data.rest_crash = 0;
+                bot[count_bot].data.get = 0;
+                bot[count_bot].data.rest_crash = 0;
                 count_bot++;
             }
             if (map[y][x] <= '9' && map[y][x] >= '0')
@@ -38,7 +38,7 @@ bool map::mapinit(robot bot[])
         {
             if (map[y][x] <= '9' && map[y][x] >= '0')
             {
-                table_in_map[count_table].usable=1;
+                table_in_map[count_table].usable = 1;
                 table_in_map[count_table].type = map[y][x] - '0';
                 table_in_map[count_table].num = count_table;
                 table_in_map[count_table].x = 0.25 + 0.5 * x;
@@ -90,33 +90,52 @@ bool map::mapinit(robot bot[])
             }
         }
     }
-    if(table_num==43)
+    if (table_num == 43)
     {
-        for(int i=1;i<=8;i++)
+        for (int i = 1; i <= 8; i++)
         {
-            table_in_map[i].usable=0;
+            table_in_map[i].usable = 0;
         }
-        for(int i=10;i<=12;i++)
+        for (int i = 10; i <= 12; i++)
         {
-            table_in_map[i].usable=0;
+            table_in_map[i].usable = 0;
         }
-        table_in_map[14].usable=0;
-        table_in_map[18].usable=0;
-        table_in_map[19].usable=0;
-        table_in_map[21].usable=0;
-        table_in_map[22].usable=0;
-        table_in_map[23].usable=0;
-        table_in_map[25].usable=0;
-        table_in_map[26].usable=0;
-        table_in_map[27].usable=0;
-        table_in_map[28].usable=0;
-        table_in_map[29].usable=0;
-        table_in_map[30].usable=0;
-        table_in_map[31].usable=0;
-        for(int i=32;i<=40;i++)
+        table_in_map[14].usable = 0;
+        table_in_map[18].usable = 0;
+        table_in_map[19].usable = 0;
+        table_in_map[21].usable = 0;
+        table_in_map[22].usable = 0;
+        table_in_map[23].usable = 0;
+        table_in_map[25].usable = 0;
+        table_in_map[26].usable = 0;
+        table_in_map[27].usable = 0;
+        table_in_map[28].usable = 0;
+        table_in_map[29].usable = 0;
+        table_in_map[30].usable = 0;
+        table_in_map[31].usable = 0;
+        for (int i = 32; i <= 40; i++)
         {
-            table_in_map[i].usable=0;
+            table_in_map[i].usable = 0;
         }
+    }
+    if (table_num == 25)
+    {
+        for (int i = 0; i < table_num; i++)
+        {
+            if (table_in_map[i].type == 5 || table_in_map[i].type == 6)
+                table_in_map[i].usable = 0;
+        }
+        table_in_map[1].usable = 1;
+        table_in_map[22].usable = 1;
+        table_in_map[23].usable = 1;
+        table_in_map[0].usable = 1;
+        table_in_map[6].usable = 0;
+        table_in_map[8].usable = 0;
+        table_in_map[13].usable = 0;
+        table_in_map[17].usable = 0;
+        table_in_map[19].usable = 0;
+          table_in_map[14].usable = 0;
+        // table_in_map[3].usable=0;
     }
     char ok[4];
     std::cin >> ok;

@@ -20,7 +20,8 @@ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
     }
     for (int i = 0; i < table_num_now; i++) // 工作台编号
     {
-        if(now_table[i].usable==0)continue;
+        if (now_table[i].usable == 0)
+            continue;
         for (int i2 = 1; i2 < 8; i2++) // 需要的物品
         {
 
@@ -40,6 +41,8 @@ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
                     continue;                              // 该原料不需要输入
                 for (int i3 = 0; i3 < table_num_now; i3++) // 遍历找到能提供物品的工作台
                 {
+                    if (now_table[i3].usable == 0)
+                        continue;
                     int flag_2 = 0;
                     if (i3 == i)
                         continue;
@@ -70,7 +73,7 @@ bool robot_table_control(map &now_map, robot now_bot[], int now_frame)
                                 }
                             }
                         }
-                        if (now_table[i3].outstats == 0 && now_table[i3].rest > 0&&now_frame<8000)
+                        if (now_table[i3].outstats == 0 && now_table[i3].rest > 0 && now_frame < 8000)
                         {
                             if (now_table[i3].out_control == 0)
                             {
